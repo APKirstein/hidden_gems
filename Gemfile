@@ -41,6 +41,11 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  # Coveralls
+  gem 'coveralls', require: false
+end
+
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'capybara', group: [:development, :test]
