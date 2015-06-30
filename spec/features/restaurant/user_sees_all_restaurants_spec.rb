@@ -10,19 +10,17 @@ feature 'user views list of all restaurants', %Q{
   # [ ] - I can view a list of restaurants
   # [ ] - I can view restaurnts in ranked order
 
-  let(:restaurant) { FactoryGirl.create(:restaurant) }
-  let(:restaurant_2) { FactoryGirl.create(:restaurant) }
+  restaurant = FactoryGirl.create(:restaurant)
 
   scenario 'user visits the index page' do
-    restaurant.save
     visit '/'
     expect(page).to have_content(restaurant.name)
   end
 
-  scenario 'user sees restaurants ordered by ranking' do
-    restaurant_2.save
-    visit '/'
-    page.body.index(restaurant_2.name).should < page.body.index(restaurant.name)
-  end
+  # restaurant_2 = FactoryGirl.create(:restaurant)
+  # scenario 'user sees restaurants ordered by ranking' do
+  #   visit '/'
+  #   page.body.index(restaurant.name).should < page.body.index(restaurant_2.name)
+  # end
 
 end

@@ -7,5 +7,5 @@ class Restaurant < ActiveRecord::Base
   validates :address, presence: true
   validates :city, presence: true
   validates :state, presence: true, inclusion: { in: STATE }
-  validates :zip_code,  format: { with: /\d{5}/ }, allow_blank: true 
+  validates :zip_code,  format: { with: /\d{5}/ }, allow_blank: true
 end
