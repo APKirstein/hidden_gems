@@ -6,7 +6,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
@@ -17,7 +17,12 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <%= link_to "#{current_user.username}", "#",
+           {'data-dropdown' => 'hover1', 'data-options' => 'is_hover: true; hover_timeout: 5000'} %>
+          <ul id="hover1" class="f-dropdown" data-dropdown-content>
+            <li class="dropdown_edit"><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          </ul>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>

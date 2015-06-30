@@ -1,10 +1,16 @@
 require 'rails_helper'
 
 feature 'user signs in', %Q{
-  As a signed up user
+  As an unauthenticated user
   I want to sign in
-  So that I can regain access to my account
+  So that I can post items and review them
 } do
+
+  # Acceptance Criteria
+  # [x] I must fill in an email and password that has a user linked to it
+  # [x] If I fill in an email/ password that is not associated with a user I
+  #  am given an error
+
   scenario 'specify valid credentials' do
     user = FactoryGirl.create(:user)
 
