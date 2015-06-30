@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user views list of all restaurants', %Q{
+feature 'user views list of all restaurants', %{
   As a user
   I want to visit the main page
   so I can see a list of all restaurants
