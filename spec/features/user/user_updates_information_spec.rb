@@ -26,9 +26,9 @@ feature 'user edits their login information', %{
     expect(page).to have_content('Signed in successfully')
     page.should have_css('.dropdown_edit')
 
-      #  Dropdown menu uses Javascript that is untestable using this Capybara gem
-      #  Instead, we have tested for inclusion of link as well as actions once
-      #  the link has been clicked
+    #  Dropdown menu uses Javascript that is untestable using this Capybara gem
+    #  Instead, we have tested for inclusion of link as well as actions once
+    #  the link has been clicked
 
     visit edit_user_registration_path
 
