@@ -10,7 +10,8 @@
 #   # [ ] - I can view a list of restaurants
 #   # [ ] - I can view restaurnts in ranked order
 #
-#   let(:restaurant) { Restaurant.create!(name: "Chipotle", address: "33 Harrison Ave", city: "Boston", state: "MA") }
+#   let(:restaurant) { Restaurant.create!(name: "Chipotle",
+#   address: "33 Harrison Ave", city: "Boston", state: "MA") }
 #
 #   scenario 'user visits the index page' do
 #     visit '/'

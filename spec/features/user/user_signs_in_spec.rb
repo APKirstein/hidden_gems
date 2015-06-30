@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user signs in', %Q{
+feature 'user signs in', %{
   As an unauthenticated user
   I want to sign in
   So that I can post items and review them

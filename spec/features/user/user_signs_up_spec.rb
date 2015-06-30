@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user registers', %Q{
+feature 'user registers', %{
   As a prospective user
   I want to create an account
   So that I can post items and review them
