@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'visitor views list of all restaurants', %Q{
+feature 'user views list of all restaurants', %Q{
   As a user
   I want to visit the main page
   so I can see a list of all restaurants
@@ -10,17 +10,19 @@ feature 'visitor views list of all restaurants', %Q{
   # [ ] - I can view a list of restaurants
   # [ ] - I can view restaurnts in ranked order
 
-  let(:restaurant) { Restaurant.create!(name: "Chipotle", address: "33 Harrison Ave", city: "Boston", state: "MA") }
+  let(:restaurant) { FactoryGirl.create(:restaurant) }
+  let(:restaurant_2) { FactoryGirl.create(:restaurant) }
 
   scenario 'user visits the index page' do
+    restaurant.save
     visit '/'
     expect(page).to have_content(restaurant.name)
-    expect(page).to have_content(restaurant.address)
-    expect(page).to have_content(restaurant.city)
-    expect(page).to have_content(restaurant.state)
   end
 
   scenario 'user sees restaurants ordered by ranking' do
-    skip
+    restaurant_2.save
+    visit '/'
+    page.body.index(restaurant_2.name).should < page.body.index(restaurant.name)
   end
+
 end
