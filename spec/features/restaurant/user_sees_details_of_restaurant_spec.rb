@@ -9,8 +9,7 @@ feature 'user views details of a restaurant', %{
   # [x] - I can click on a restaurant's name and get redirected
   # [x] - I am redirected to the restaurant show page
   # [x] - I can see the details of the restaurant
-
-  restaurant =  FactoryGirl.create(:restaurant)
+  let!(:restaurant) { FactoryGirl.create(:restaurant) }
 
   scenario 'user visits the index page' do
     visit root_path
