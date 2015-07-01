@@ -15,3 +15,6 @@
  *= require foundation_and_overrides
 
  */
+ul {
+  list-style: none;
+}
