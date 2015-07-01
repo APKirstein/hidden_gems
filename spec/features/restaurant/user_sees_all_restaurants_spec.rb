@@ -6,21 +6,15 @@ feature 'user views list of all restaurants', %Q{
   so I can see a list of all restaurants
 } do
 
-  # [ ] - I can navigate to the root page
-  # [ ] - I can view a list of restaurants
-  # [ ] - I can view restaurnts in ranked order
+  # [x] - I can navigate to the root page
+  # [x] - I can view a list of restaurants
+  # [x] - I can view restaurnts in ranked order
 
-  restaurant = FactoryGirl.create(:restaurant)
+  let!(:restaurant) { FactoryGirl.create(:restaurant) }
 
   scenario 'user visits the index page' do
-    visit '/'
+    visit root_path
+    
     expect(page).to have_content(restaurant.name)
   end
-
-  # restaurant_2 = FactoryGirl.create(:restaurant)
-  # scenario 'user sees restaurants ordered by ranking' do
-  #   visit '/'
-  #   page.body.index(restaurant.name).should < page.body.index(restaurant_2.name)
-  # end
-
 end

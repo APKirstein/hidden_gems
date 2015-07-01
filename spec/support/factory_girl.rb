@@ -2,13 +2,13 @@ require 'factory_girl'
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) {|n| "user#{n}@example.com" }
+    sequence(:email) { |n| "user#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
   end
 
   factory :restaurant do
-    sequence(:name) {|n| Faker::Company.name + "#{n}" }
+    sequence(:name) { |n| Faker::Company.name + "#{n}" }
     address Faker::Address.street_address
     city Faker::Address.city
     state Faker::Address.state_abbr
