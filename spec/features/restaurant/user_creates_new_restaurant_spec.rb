@@ -6,13 +6,13 @@ feature 'user adds a new restaurant', %{
   so I can add a new restaurant
 } do
 
-  # [ ] - I can navigate to the restaurants/new page
-  # [ ] - I can create a new restaurant
-  # [ ] - I am redirected to the restaurants index page
+  # [x] - I can navigate to the restaurants/new page
+  # [x] - I can create a new restaurant
+  # [x] - I am redirected to the restaurants index page
 
-  restaurant = FactoryGirl.build(:restaurant)
+  let(:restaurant) { FactoryGirl.build(:restaurant) }
 
-  #valid test
+  # valid test
   scenario 'user submits a new restaurant' do
     visit new_restaurant_path
 
@@ -28,7 +28,7 @@ feature 'user adds a new restaurant', %{
 
   end
 
-  #invalid test
+  # invalid test
   scenario 'user submits an invalid restaurant' do
     visit new_restaurant_path
 

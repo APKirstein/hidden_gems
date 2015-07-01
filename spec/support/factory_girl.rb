@@ -8,7 +8,7 @@ FactoryGirl.define do
   end
 
   factory :restaurant do
-    sequence(:name) {|n| Faker::Company.name + "#{n}" }
+    sequence(:name) { |n| Faker::Company.name + "#{n}" }
     address Faker::Address.street_address
     city Faker::Address.city
     state Faker::Address.state_abbr

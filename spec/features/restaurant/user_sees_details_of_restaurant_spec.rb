@@ -6,11 +6,10 @@ feature 'user views details of a restaurant', %{
   so I can see its details
 } do
 
-  # [ ] - I can click on a restaurant's name and get redirected
-  # [ ] - I am redirected to the restaurant show page
-  # [ ] - I can see the details of the restaurant
-
-  restaurant =  FactoryGirl.create(:restaurant)
+  # [x] - I can click on a restaurant's name and get redirected
+  # [x] - I am redirected to the restaurant show page
+  # [x] - I can see the details of the restaurant
+  let!(:restaurant) { FactoryGirl.create(:restaurant) }
 
   scenario 'user visits the index page' do
     visit '/'
