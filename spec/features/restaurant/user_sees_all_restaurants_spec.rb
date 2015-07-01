@@ -15,5 +15,4 @@ feature 'user views list of all restaurants', %{
     visit '/'
     expect(page).to have_content(restaurant.name)
   end
-
 end
