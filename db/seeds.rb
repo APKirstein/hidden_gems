@@ -6,4 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Restaurant.create!(name: "Chipotle", address: "33 Harrison Ave", city: "Boston", state: "MA", zip_code: "20111")
+Restaurant.create!(
+  name: "Chipotle",
+  address: "33 Harrison Ave",
+  city: "Boston",
+  state: "MA",
+  zip_code: "20111"
+)
