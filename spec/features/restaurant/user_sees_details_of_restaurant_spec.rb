@@ -12,7 +12,7 @@ feature 'user views details of a restaurant', %{
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
 
   scenario 'user visits the index page' do
-    visit '/'
+    visit root_path
 
     click_link(restaurant.name)
 
