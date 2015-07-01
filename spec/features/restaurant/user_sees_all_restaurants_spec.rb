@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user views list of all restaurants', %Q{
+feature 'user views list of all restaurants', %{
   As a user
   I want to visit the main page
   so I can see a list of all restaurants
@@ -14,7 +14,6 @@ feature 'user views list of all restaurants', %Q{
 
   scenario 'user visits the index page' do
     visit root_path
-    
     expect(page).to have_content(restaurant.name)
   end
 end
