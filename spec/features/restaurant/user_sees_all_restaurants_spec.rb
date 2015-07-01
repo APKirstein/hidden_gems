@@ -8,7 +8,7 @@ feature 'user views list of all restaurants', %{
 
   # [x] - I can navigate to the root page
   # [x] - I can view a list of restaurants
-  # [x] - I can view restaurnts in ranked order
+  # [x] - I can view restaurants in ranked order
 
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
 
