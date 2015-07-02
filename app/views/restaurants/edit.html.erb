@@ -1,0 +1,32 @@
+<div class="row">
+  <%- if @restaurant.errors.present? -%>
+    <div class="large-12 alert-box alert" data-alert>
+      <ul>
+        <%- @restaurant.errors.full_messages.each do |error| -%>
+          <li><%= error %></li>
+        <%- end -%>
+      </ul>
+    </div>
+  <%- end -%>
+
+  <div class="large-12">
+    <h1>Edit Restaurant</h1>
+
+    <%= form_for @restaurant do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+    <%= f.label :zip_code %>
+    <%= f.text_field :zip_code %>
+    <%= f.submit "Submit Changes" %>
+    <%- end -%>
+
+    <%= button_to "Delete Restaurant", @restaurant, method: :delete, data:
+    {confirm: "Are you sure you want to delete your restaurant?"}%>
+  </div>
+</div>

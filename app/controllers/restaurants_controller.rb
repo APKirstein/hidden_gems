@@ -24,6 +24,20 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def edit
+    @restaurant = Restaurant.find(params[:id])
+  end
+
+  def update
+    @restaurant = Restaurant.find(params[:id])
+    if @restaurant.update_attributes(restaurant_params)
+      flash[:success] = 'Changes saved successfully'
+      redirect_to restaurant_path(@restaurant)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @restaurant = Restaurant.find(params[:id]).destroy
     flash[:notice] = "Deleted"
