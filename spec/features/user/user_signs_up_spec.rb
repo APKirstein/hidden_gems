@@ -19,6 +19,7 @@ feature 'user registers', %{
     fill_in 'Username', with: "johnsmith"
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    attach_file('user[profile_photo]', File.absolute_path('./spec/support/upload/image_upload.jpg'))
 
     click_button 'Sign up'
 
