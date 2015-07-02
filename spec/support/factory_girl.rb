@@ -15,5 +15,4 @@ FactoryGirl.define do
     state Faker::Address.state_abbr
     zip_code Faker::Address.zip_code
   end
-  
 end
