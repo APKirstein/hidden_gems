@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'visitor edits details of a created restaurant', %Q{
+feature 'visitor edits details of a created restaurant', %{
   As an authenticated user
   I want to update a restaurant
   So that I can keep the address up to date
