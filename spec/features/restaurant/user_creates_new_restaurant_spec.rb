@@ -11,35 +11,54 @@ feature 'user adds a new restaurant', %{
   # [x] - I am redirected to the restaurants index page
 
   let(:restaurant) { FactoryGirl.build(:restaurant) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-  # valid test
-  scenario 'user submits a new restaurant' do
-    visit new_restaurant_path
+  context 'user is signed in' do
+    before(:each) do
+      visit new_user_session_path
 
-    fill_in('Name', with: restaurant.name)
-    fill_in('Address', with: restaurant.address)
-    fill_in('City', with: restaurant.city)
-    fill_in('State', with: restaurant.state)
-    fill_in('Zip', with: restaurant.zip_code)
+      fill_in 'Email', with: user.email
+      fill_in 'Password', with: user.password
 
-    click_button('Add Restaurant')
+      click_button 'Log in'
+    end
+    # valid test
+    scenario 'authenticated user submits a new restaurant' do
+      visit new_restaurant_path
 
-    expect(page).to have_content(restaurant.name)
+      fill_in('Name', with: restaurant.name)
+      fill_in('Address', with: restaurant.address)
+      fill_in('City', with: restaurant.city)
+      fill_in('State', with: restaurant.state)
+      fill_in('Zip', with: restaurant.zip_code)
 
+      click_button('Add Restaurant')
+
+      expect(page).to have_content(restaurant.name)
+
+    end
+
+    # invalid test
+    scenario 'user submits an invalid restaurant' do
+      visit new_restaurant_path
+
+      fill_in('Name', with: "")
+      fill_in('Address', with: restaurant.address)
+      fill_in('City', with: restaurant.city)
+      fill_in('State', with: restaurant.state)
+      fill_in('Zip', with: restaurant.zip_code)
+
+      click_button('Add Restaurant')
+
+      expect(page).to have_content("Name can't be blank")
+    end
   end
 
-  # invalid test
-  scenario 'user submits an invalid restaurant' do
-    visit new_restaurant_path
-
-    fill_in('Name', with: "")
-    fill_in('Address', with: restaurant.address)
-    fill_in('City', with: restaurant.city)
-    fill_in('State', with: restaurant.state)
-    fill_in('Zip', with: restaurant.zip_code)
-
-    click_button('Add Restaurant')
-
-    expect(page).to have_content("Name can't be blank")
+  context 'user is not signed in' do
+    # unauthorized user
+    scenario 'unauthenticated user cannot submit a new restaurant' do
+      visit new_restaurant_path
+      expect(page).to have_content("You need to sign in or sign up before")
+    end
   end
 end
