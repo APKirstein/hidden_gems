@@ -1,13 +1,4 @@
 <div class="row">
-  <%- if @restaurant.errors.present? -%>
-    <div class="large-12 alert-box alert" data-alert>
-      <ul>
-        <%- @restaurant.errors.full_messages.each do |error| -%>
-          <li><%= error %></li>
-        <%- end -%>
-      </ul>
-    </div>
-  <%- end -%>
 
   <div class="large-12">
     <h1>Edit Restaurant</h1>

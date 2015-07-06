@@ -34,6 +34,7 @@ class RestaurantsController < ApplicationController
       flash[:success] = 'Changes saved successfully'
       redirect_to restaurant_path(@restaurant)
     else
+      flas[:notice] = @restaurant.errors.full_messages.join(". ")
       render :edit
     end
   end
