@@ -13,6 +13,14 @@
 require 'coveralls'
 Coveralls.wear!('rails')
 
+def sign_in_as(user)
+  visit root_path
+  click_link "Sign In"
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_button 'Log in'
+end
+
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
@@ -40,7 +48,8 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
+  config.filter_run :focus
+  config.run_all_when_everything_filtered = true
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
