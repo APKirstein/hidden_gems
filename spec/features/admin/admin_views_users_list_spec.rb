@@ -2,14 +2,30 @@ require 'rails_helper'
 
 feature 'admin views list of users', %{
   As an administrator of Date Bites
-  I want to see a list 
-  So that I can post items and review them
+  I want to see a list of users via usernames and emails
+  So that I can view who is using my website.
 } do
 
   # Acceptance Criteria:
-  # [x] I must specify a valid email address, username,
-  #   password, and password confirmation
-  # [x] If I don't specify the required information, I am presented with
-  #   an error message
+  # [X] I must be logged in as an admin
+  # [X] I can visiT /admin/users to see all users
 
+  let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
+  let!(:user) { FactoryGirl.create(:user) }
+
+  scenario 'admin views users' do
+    sign_in_as(admin)
+    visit '/admin/users'
+
+    expect(page).to have_content(user.username)
+    expect(page).to have_content(user.email)
+  end
+
+  scenario 'unauthorized users are redirected' do
+    sign_in_as(user)
+    visit '/admin/users'
+
+    expect(page).to have_content('not authorized')
+    expect(current_path).to eq(root_path)
+  end
 end
