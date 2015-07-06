@@ -20,23 +20,16 @@ feature 'user adds a review', %{
   # proximity: Middle of Nowhere - 2 - 3 - 4 - Right Next Door
   # volume: Needed to Scream - 2 - 3 - 4 - Didn't need to repeat myself
   # originality: Same Old, Same Old - 2 - 3 - 4 - Telling All My Friends
+  let!(:restaurant)  { FactoryGirl.create(:restaurant) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-  let!(:restaurant) = { FactoryGirl.create(:restaurant) }
 
   context "user is signed in" do
-    let!(:user) = { FactoryGirl.create(:user) }
 
-    before(:each) do
-      visit new_user_session_path
-
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-
-      click_button 'Log in'
-    end
 
     scenario 'user adds a review with comment from restaurant detail page' do
-      visit restaurant_path(id: restaurant)
+      sign_in_as(user)
+      visit restaurant_path(restaurant)
 
       choose 'Worth It'
       choose 'Right Next Door'
@@ -57,7 +50,8 @@ feature 'user adds a review', %{
     end
 
     scenario 'user adds a review without comment from restaurant detail page' do
-      visit restaurant_path(id: restaurant)
+      sign_in_as(user)
+      visit restaurant_path(restaurant)
 
       choose 'Worth It'
       choose 'Right Next Door'
@@ -75,7 +69,8 @@ feature 'user adds a review', %{
     end
 
     scenario 'user adds a review without filling out all fields' do
-      visit restaurant_path(id: restaurant)
+      sign_in_as(user)
+      visit restaurant_path(restaurant)
 
       choose 'Worth It'
       choose '2'
@@ -93,7 +88,9 @@ feature 'user adds a review', %{
   end
 
   context "user is not signed in" do
-    visit restaurant_path(id: restaurant)
+    let!(:restaurant)  { FactoryGirl.create(:restaurant) }
+    sign_in_as(user)
+    visit restaurant_path(restaurant)
 
     expect(page).to have_content(restaurant.address)
     expect(page).to have_contenct('Sign in')
