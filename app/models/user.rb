@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   mount_uploader :profile_photo, ProfilePhotoUploader
 
-  def is_admin?
+  def admin?
     role == 'admin'
   end
 
