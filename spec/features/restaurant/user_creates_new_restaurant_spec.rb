@@ -10,20 +10,13 @@ feature 'user adds a new restaurant', %{
   # [x] - I can create a new restaurant
   # [x] - I am redirected to the restaurants index page
 
-  let(:restaurant) { FactoryGirl.build(:restaurant) }
+  let!(:restaurant) { FactoryGirl.build(:restaurant) }
   let!(:user) { FactoryGirl.create(:user) }
 
   context 'user is signed in' do
-    before(:each) do
-      visit new_user_session_path
-
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-
-      click_button 'Log in'
-    end
     # valid test
     scenario 'authenticated user submits a new restaurant' do
+      sign_in_as(user)
       visit new_restaurant_path
 
       fill_in('Name', with: restaurant.name)
@@ -40,6 +33,7 @@ feature 'user adds a new restaurant', %{
 
     # invalid test
     scenario 'user submits an invalid restaurant' do
+      sign_in_as(user)
       visit new_restaurant_path
 
       fill_in('Name', with: "")

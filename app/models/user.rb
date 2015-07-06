@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :reviews
+
   validates :username, presence: true, uniqueness: true, length: { in: 3..15 },
       format: { with: /[a-z0-9]/ }, format: { without: /[^a-z0-9]/ }
 

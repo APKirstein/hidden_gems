@@ -16,4 +16,46 @@
   {confirm: "Are you sure you want to delete this restaurant?"}%>
 <% end %>
 
+<div>
+  <ul>
+    <li>Reviews: </li>
+    <br>
+    <% @reviews.each do |review| %>
+      <li>
+        <%= review.user.username.capitalize %>
+      </li>
+      <li>
+        <table>
+          <tr><td>Value: <%= review.value %></tr></td>
+          <tr><td>Proximity: <%= review.proximity %></tr></td>
+          <tr><td>Volume: <%= review.volume %></tr></td>
+          <tr><td>Originality: <%= review.originality %></tr></td>
+          <tr><td><%= review.body %></tr></td>
+        </table>
+      </li>
+    <% end %>
+  </table>
+</div>
+
+<div>
+  <%= form_for [ @restaurant, @review ] do |f| %>
+    <%= f.label "value" %>
+    <%= f.select :value, Review::VALUES %>
+
+    <%= f.label "proximity" %>
+    <%= f.select :proximity, Review::PROXIMITY %>
+
+    <%= f.label "volume" %>
+    <%= f.select :volume, Review::VOLUME %>
+
+    <%= f.label "originality" %>
+    <%= f.select :originality, (0..5) %>
+
+    <%= f.label "body" %>
+    <%= f.text_field :body %>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
+
 <p class="text-center"><%= link_to "Home", restaurants_path %></p>

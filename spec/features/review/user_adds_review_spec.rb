@@ -31,12 +31,11 @@ feature 'user adds a review', %{
       sign_in_as(user)
       visit restaurant_path(restaurant)
 
-      choose 'Worth It'
-      choose 'Right Next Door'
-      choose 'Needed To Scream'
-      choose '3'
-
-      fill_in 'Comments', with: 'Textytexttext'
+      select 'worth it', from: "review_value"
+      select 'right next door', from: "review_proximity"
+      select 'needed to scream', from: "review_volume"
+      select 3, from: "review_originality"
+      fill_in 'review_body', with: 'Textytexttext'
 
       click_button 'Submit'
 
@@ -53,10 +52,10 @@ feature 'user adds a review', %{
       sign_in_as(user)
       visit restaurant_path(restaurant)
 
-      choose 'Worth It'
-      choose 'Right Next Door'
-      choose 'Needed To Scream'
-      choose '3'
+      select 'worth it', from: "review_value"
+      select 'right next door', from: "review_proximity"
+      select 'needed to scream', from: "review_volume"
+      select 3, from: "review_originality"
 
       click_button 'Submit'
 
@@ -72,28 +71,26 @@ feature 'user adds a review', %{
       sign_in_as(user)
       visit restaurant_path(restaurant)
 
-      choose 'Worth It'
-      choose '2'
-      choose 'Needed To Scream'
-      expect(page).to have_content("Textytexttext")
+      select 'worth it', from: "review_value"
+      select 'right next door', from: "review_proximity"
+      select 'needed to scream', from: "review_volume"
 
       click_button 'Submit'
 
       expect(page).to have_content(restaurant.name)
-      page.find_field('Comments').set("Textytexttext")
-      page.find_field("Worth It").should be_checked
-      page.find_field("2").should be_checked
-      expect(page).to have_content("You must complete all ratings!")
+      expect(page).to have_content("greater than")
     end
   end
 
   context "user is not signed in" do
     let!(:restaurant)  { FactoryGirl.create(:restaurant) }
-    sign_in_as(user)
-    visit restaurant_path(restaurant)
+    scenario 'visitor tries to visit a show page' do
 
-    expect(page).to have_content(restaurant.address)
-    expect(page).to have_contenct('Sign in')
-    expect(page).to_not have_content("Worth it")
+      visit restaurant_path(restaurant)
+
+      expect(page).to have_content(restaurant.address)
+      expect(page).to have_content('Sign In')
+    end
   end
+
 end
