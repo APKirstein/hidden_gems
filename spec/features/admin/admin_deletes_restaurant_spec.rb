@@ -7,12 +7,13 @@ feature 'admin deletes restaurant', %{
 } do
 
   # Acceptance Criteria:
-  # [] I must be logged in as an admin; if I am not, I receive an error and then
-  # redirected to the home page
-  # [] I can delete a restaurant by visiting admin/restaurants and clicking on a delete
-  # link next to the entry associated to the restaurant
-  # [] I receive a confirmation when a restaurant has been deleted
-  # [] After deleting a restaurant, I am redirected to the admin/restaurants page
+  # [X] I must be logged in as an admin; if I am not, when I visit
+  # /admin/restaurants - I receive an error and then redirected to the home page
+  # [X] I can delete a restaurant by visiting admin/restaurants and clicking on
+  # a delete link next to the entry associated to the restaurant
+  # [X] I receive a confirmation when a restaurant has been deleted
+  # [X] After deleting a restaurant, I am redirected to the admin/restaurants
+  # page
 
   let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
   let!(:restaurant) { FactoryGirl.create(:restaurant) }

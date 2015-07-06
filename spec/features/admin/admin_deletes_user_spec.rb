@@ -7,8 +7,8 @@ feature 'admin deletes user', %{
 } do
 
   # Acceptance Criteria:
-  # [X] I must be logged in as an admin; if I am not, I receive an error and then
-  # redirected to the home page
+  # [X] I must be logged in as an admin; if I am not, I receive an error and
+  # then redirected to the home page
   # [X] I can delete a user by visiting admin/users and clicking on a delete
   # link next to the entry associated to the user
   # [X] I receive a confirmation when a user has been deleted
