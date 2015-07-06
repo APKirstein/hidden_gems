@@ -8,14 +8,14 @@ feature 'admin views list of users', %{
 
   # Acceptance Criteria:
   # [X] I must be logged in as an admin
-  # [X] I can visiT /admin/users to see all users
+  # [X] I can visit /admin/users to see all users
 
   let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
   let!(:user) { FactoryGirl.create(:user) }
 
   scenario 'admin views users' do
     sign_in_as(admin)
-    visit '/admin/users'
+    visit admin_users_path
 
     expect(page).to have_content(user.username)
     expect(page).to have_content(user.email)
@@ -23,7 +23,7 @@ feature 'admin views list of users', %{
 
   scenario 'unauthorized users are redirected' do
     sign_in_as(user)
-    visit '/admin/users'
+    visit admin_users_path
 
     expect(page).to have_content('not authorized')
     expect(current_path).to eq(root_path)
