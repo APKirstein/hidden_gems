@@ -17,4 +17,4 @@
 /public/uploads
 
 # So as not to commit AWS credentials
-/.env
+.env
