@@ -20,6 +20,7 @@
           <%= link_to 'admin', '#', {'data-dropdown' => 'hover_admin', 'data-options' => 'is_hover: true; hover_timeout: 5000'} %>
           <ul id="hover_admin" class="f-dropdown" data-dropdown-content>
             <li class="dropdown_admin"><%= link_to 'Users', admin_users_path %></li>
+            <li class="dropdown_admin"><%= link_to 'Restaurants', admin_restaurants_path %></li>
           </ul>
         <%- end -%>
       </ul>
