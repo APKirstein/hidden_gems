@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  mount_uploader :profile_photo, ProfilePhotoUploader
+
   validates :username, presence: true, uniqueness: true, length: { in: 3..15 },
       format: { with: /[a-z0-9]/ }, format: { without: /[^a-z0-9]/ }
 
