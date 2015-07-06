@@ -11,9 +11,20 @@ feature 'user views list of all restaurants', %{
   # [x] - I can view restaurants in ranked order
 
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-  scenario 'user visits the index page' do
-    visit root_path
-    expect(page).to have_content(restaurant.name)
+  context "user is signed in" do
+    scenario 'authenticated user visits the index page' do
+      visit root_path
+      sign_in_as(user)
+      expect(page).to have_content(restaurant.name)
+    end
+  end
+
+  context "user is not signed in" do
+    scenario 'unauthenticated user visits the index page' do
+      visit root_path
+      expect(page).to have_content(restaurant.name)
+    end
   end
 end

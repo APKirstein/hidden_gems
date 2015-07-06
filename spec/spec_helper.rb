@@ -13,6 +13,14 @@
 require 'coveralls'
 Coveralls.wear!('rails')
 
+def sign_in_as(user)
+  visit root_path
+  click_link "Sign In"
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_button 'Log in'
+end
+
 # The `.rspec` file also contains a few flags that are not defaults but that
 # users commonly want.
 #
