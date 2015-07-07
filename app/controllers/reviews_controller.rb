@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-
   def new
     @review = Review.new
   end
@@ -18,9 +17,8 @@ class ReviewsController < ApplicationController
   end
 
   protected
-
   def review_params
-    params.require(:review).permit(:restaurant_id, :value, :proximity, :volume, :originality, :body)
+    params.require(:review).permit(:restaurant_id, :value, :proximity,
+      :volume, :originality, :body)
   end
-
 end
