@@ -21,7 +21,7 @@ feature 'admin deletes user', %{
     sign_in_as(admin)
     visit admin_users_path
 
-    page.click_link("Delete", href: "/admin/users/#{user.id}")
+    click_button('Delete')
 
     expect(page).to have_content("Successfully deleted #{user.username}!")
     expect(page).to_not have_content(user.email)

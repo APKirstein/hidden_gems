@@ -20,9 +20,9 @@ feature 'admin deletes restaurant', %{
 
   scenario 'admin deletes restaurants' do
     sign_in_as(admin)
-    visit '/admin/restaurants'
+    visit admin_restaurants_path
 
-    page.click_link("Delete", href: "/admin/restaurants/#{restaurant.id}")
+    click_button('Delete')
 
     expect(page).to have_content("Successfully deleted #{restaurant.name}!")
     expect(page).to_not have_content(restaurant.address)
@@ -31,7 +31,7 @@ feature 'admin deletes restaurant', %{
   scenario 'unauthorized users are redirected' do
     user = FactoryGirl.create(:user)
     sign_in_as(user)
-    visit '/admin/restaurants'
+    visit admin_restaurants_path
 
     expect(page).to have_content('not authorized')
     expect(current_path).to eq(root_path)
