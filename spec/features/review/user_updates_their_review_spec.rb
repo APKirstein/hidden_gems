@@ -34,8 +34,7 @@ feature 'user updates their review', %{
     end
 
     let!(:user2) { FactoryGirl.create(:user) }
-    let(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id,
-                               user_id: user2.id) }
+    let(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id, user_id: user2.id) }
 
     scenario "an authenticated user cannot update another user's review" do
       user = FactoryGirl.create(:user)
