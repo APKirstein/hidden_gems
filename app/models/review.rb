@@ -20,16 +20,18 @@ class Review < ActiveRecord::Base
     less_than_or_equal_to: 5
   }
   validates :proximity, presence: true, numericality:
-    {
-      greater_than: 0,
-      less_than_or_equal_to: 5
-    }
-  validates :volume, presence: true, numericality: {
-                                                      greater_than: 0,
-                                                      less_than_or_equal_to: 5
-                                                    }
-  validates :originality, presence: true, numericality: {
+  {
     greater_than: 0,
     less_than_or_equal_to: 5
-    }
+  }
+  validates :volume, presence: true, numericality:
+  {
+    greater_than: 0,
+    less_than_or_equal_to: 5
+  }
+  validates :originality, presence: true, numericality:
+  {
+    greater_than: 0,
+    less_than_or_equal_to: 5
+  }
 end
