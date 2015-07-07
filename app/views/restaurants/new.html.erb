@@ -1,0 +1,15 @@
+  <div class="small-4 row column">
+    <%= form_for @restaurant do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+      <%= f.submit "Add Restaurant" %>
+    <% end %>
+  </div>
