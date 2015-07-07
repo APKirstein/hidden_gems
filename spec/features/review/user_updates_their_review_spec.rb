@@ -32,28 +32,33 @@ feature 'user updates their review', %{
       expect(page).to have_content("This is a new, edited comment!")
       expect(page).to have_content("Your changes have been saved!")
     end
-  #
-  #   let!(:user2) { FactoryGirl.create(:user) }
-  #   let(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id,
-  #     user_id: user2.id) }
-  #
-  #   scenario "an authenticated user cannot update another user's review" do
-  #     sign_in_as(user)
-  #
-  #     visit restaurant_path(restaurant)
-  #
-  #     expect(page).to_not have_content("Edit Review")
-  #   end
+
+    let!(:user2) { FactoryGirl.create(:user) }
+    let(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id,
+      user_id: user2.id) }
+
+    scenario "an authenticated user cannot update another user's review" do
+      user = FactoryGirl.create(:user)
+      restaurant = FactoryGirl.create(:restaurant)
+
+      sign_in_as(user)
+
+      visit restaurant_path(restaurant)
+
+      expect(page).to_not have_content("Edit Review")
+    end
   end
-  #
-  # context "user is not signed in" do
-  #   let!(:review) { FactoryGirl.create(:review,
-  #     restaurant_id: restaurant.id, user_id: user.id) }
-  #
-  #   scenario "an unauthenticated user cannot update any reviews" do
-  #     visit restaurant_path(id: restaurant)
-  #
-  #     expect(page).to_not have_content("Edit Review")
-  #   end
-  # end
+
+  context "user is not signed in" do
+    scenario "an unauthenticated user cannot update any reviews" do
+      restaurant = FactoryGirl.create(:restaurant)
+      user = FactoryGirl.create(:user)
+      FactoryGirl.create(:review,
+        restaurant_id: restaurant.id, user_id: user.id)
+        
+      visit restaurant_path(id: restaurant)
+
+      expect(page).to_not have_content("Edit Review")
+    end
+  end
 end
