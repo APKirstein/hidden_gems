@@ -2,7 +2,6 @@
 ![Code Climate](https://codeclimate.com/github/APKirstein/hidden_gems.png)
 [![Coverage Status](https://coveralls.io/repos/APKirstein/hidden_gems/badge.svg)](https://coveralls.io/r/APKirstein/hidden_gems)
 
-
 Rails application initialized from the make_it_so gem using Ruby 2.2.0
 Developers: Jesse Norris, Drew Kirstein, Rovaira Dasig, & Paul Yun
 

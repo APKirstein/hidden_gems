@@ -16,5 +16,5 @@
 # Ignore uploaded files in test/development
 /public/uploads
 
-# So as not to commit AWS credentials
+# Ignore environment variables
 .env
