@@ -15,24 +15,37 @@
   <%= button_to "Delete", @restaurant, method: :delete, data:
   {confirm: "Are you sure you want to delete this restaurant?"}%>
 <% end %>
-
+<br>
+<br>
 <div>
   <ul>
-    <li>Reviews: </li>
+    <li><h2>Reviews:</h2></li>
     <br>
     <% @reviews.each do |review| %>
-      <li>
-        <%= review.user.username.capitalize %>
-      </li>
-      <li>
-        <table>
-          <tr><td>Value: <%= review.value %></tr></td>
-          <tr><td>Proximity: <%= review.proximity %></tr></td>
-          <tr><td>Volume: <%= review.volume %></tr></td>
-          <tr><td>Originality: <%= review.originality %></tr></td>
-          <tr><td><%= review.body %></tr></td>
-        </table>
-      </li>
+      <table>
+        <tr>
+          <td>
+            <h4>
+              <%= review.user.username.capitalize%>
+            </h4>
+          </td>
+        </tr>
+        <tr>
+          <td>Ratings</td>
+          <td>Comments</td>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Value: <%= review.value %></li>
+              <li>Proximity: <%= review.proximity %></li>
+              <li>Volume: <%= review.volume %></li>
+              <li>Originality: <%= review.originality %></li>
+            </ul>
+          </td>
+          <td><%= review.body %></td>
+        </tr>
+      </table>
     <% end %>
   </table>
 </div>
@@ -40,19 +53,19 @@
 <div>
   <%= form_for [ @restaurant, @review ] do |f| %>
     <%= f.label "value" %>
-    <%= f.select :value, Review::VALUES %>
+    <%= f.select :value, Review::VALUES, :include_blank => true %>
 
     <%= f.label "proximity" %>
-    <%= f.select :proximity, Review::PROXIMITY %>
+    <%= f.select :proximity, Review::PROXIMITY, :include_blank => true %>
 
     <%= f.label "volume" %>
-    <%= f.select :volume, Review::VOLUME %>
+    <%= f.select :volume, Review::VOLUME, :include_blank => true %>
 
     <%= f.label "originality" %>
-    <%= f.select :originality, (0..5) %>
+    <%= f.select :originality, Review::ORIGINALITY, :include_blank => true %>
 
     <%= f.label "body" %>
-    <%= f.text_field :body %>
+    <%= f.text_area :body %>
 
     <%= f.submit "Submit" %>
   <% end %>

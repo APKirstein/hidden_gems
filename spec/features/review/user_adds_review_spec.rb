@@ -78,7 +78,7 @@ feature 'user adds a review', %{
       click_button 'Submit'
 
       expect(page).to have_content(restaurant.name)
-      expect(page).to have_content("greater than")
+      expect(page).to have_content("can't be blank")
     end
   end
 
