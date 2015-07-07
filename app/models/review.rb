@@ -14,18 +14,20 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :restaurant
 
-  validates :value, presence: true, numericality: {
+  validates :value, presence: true, numericality:
+  {
     greater_than: 0,
     less_than_or_equal_to: 5
-    }
-  validates :proximity, presence: true, numericality: {
-    greater_than: 0,
-    less_than_or_equal_to: 5
+  }
+  validates :proximity, presence: true, numericality:
+    {
+      greater_than: 0,
+      less_than_or_equal_to: 5
     }
   validates :volume, presence: true, numericality: {
-    greater_than: 0,
-    less_than_or_equal_to: 5
-    }
+                                                      greater_than: 0,
+                                                      less_than_or_equal_to: 5
+                                                    }
   validates :originality, presence: true, numericality: {
     greater_than: 0,
     less_than_or_equal_to: 5

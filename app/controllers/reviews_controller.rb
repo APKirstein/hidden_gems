@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
   end
 
   protected
+  
   def review_params
     params.require(:review).permit(:restaurant_id, :value, :proximity,
       :volume, :originality, :body)
