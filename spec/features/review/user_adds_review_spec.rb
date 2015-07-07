@@ -15,18 +15,14 @@ feature 'user adds a review', %{
   # [] I must be presented with errors if I leave an invalid review
   # [] If all is good, I get a successfully submitted message
 
-
   # value: Not Worth It - 2 - 3 - 4 - Worth It
   # proximity: Middle of Nowhere - 2 - 3 - 4 - Right Next Door
   # volume: Needed to Scream - 2 - 3 - 4 - Didn't need to repeat myself
   # originality: Same Old, Same Old - 2 - 3 - 4 - Telling All My Friends
-  let!(:restaurant)  { FactoryGirl.create(:restaurant) }
+  let!(:restaurant) { FactoryGirl.create(:restaurant) }
   let!(:user) { FactoryGirl.create(:user) }
 
-
   context "user is signed in" do
-
-
     scenario 'user adds a review with comment from restaurant detail page' do
       sign_in_as(user)
       visit restaurant_path(restaurant)
@@ -83,7 +79,7 @@ feature 'user adds a review', %{
   end
 
   context "user is not signed in" do
-    let!(:restaurant)  { FactoryGirl.create(:restaurant) }
+    let!(:restaurant) { FactoryGirl.create(:restaurant) }
     scenario 'visitor tries to visit a show page' do
 
       visit restaurant_path(restaurant)
