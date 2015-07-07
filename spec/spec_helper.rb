@@ -10,6 +10,10 @@ def sign_in_as(user)
 end
 
 RSpec.configure do |config|
+  config.before :each do
+    ActionMailer::Base.deliveries.clear
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
