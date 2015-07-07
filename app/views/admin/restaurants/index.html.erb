@@ -11,9 +11,11 @@
         <%= restaurant.address %><br><%= restaurant.city %>,
         <%= restaurant.state %> <%= restaurant.zip_code %>
       </td>
-      <td><%= link_to 'Delete',
-      admin_restaurant_path(restaurant), method: :delete, data: {
-        confirm: "Are you sure you want to delete #{restaurant.name}?"} %></td>
+      <td>
+        <%= button_to "Delete", admin_restaurant_path(restaurant),
+          method: :delete, data: {confirm: "Are you sure you want to delete
+          #{restaurant.name}?"} %>
+      </td>
     </tr>
   <% end %>
 </table>

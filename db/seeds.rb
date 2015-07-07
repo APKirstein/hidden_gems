@@ -6,18 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(
-  email: "rovaira@gmail.com",
+user = User.find_or_create_by(email: "rovaira@gmail.com")
+user.update_attributes!({
   username: "rovaira",
   password: "testtest",
   password_confirmation: "testtest",
   role: "admin"
-)
+})
 
-Restaurant.create!(
-  name: "Chipotle",
+restaurant = Restaurant.find_or_create_by(name: "Chipotle")
+restaurant.update_attributes!({
   address: "33 Harrison Ave",
   city: "Boston",
   state: "MA",
   zip_code: "20111"
-)
+})
