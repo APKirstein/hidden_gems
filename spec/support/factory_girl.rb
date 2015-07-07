@@ -15,4 +15,14 @@ FactoryGirl.define do
     state Faker::Address.state_abbr
     zip_code Faker::Address.zip_code
   end
+
+  factory :review do
+    user_id 1
+    restaurant_id 1
+    value 2
+    proximity 3
+    volume 4
+    originality 5
+    body "Dododooo we left a comment!"
+  end
 end

@@ -20,17 +20,20 @@
 <br>
 <br>
 <div>
-  <ul>
-    <li><h2>Reviews:</h2></li>
-    <br>
-    <% @reviews.each do |review| %>
+  <h2>Reviews:</h2>
+  <br>
+  <% unless @restaurant.reviews.empty? %>
+    <% @restaurant.reviews.each do |review| %>
       <table>
         <tr>
           <td>
             <h4>
-              <%= review.user.username.capitalize%>
+              <%= review.user.username.capitalize %>
             </h4>
           </td>
+          <% if current_user == review.user %>
+            <td><%= link_to "Edit Review", edit_review_path(review) %></td>
+          <% end %>
         </tr>
         <tr>
           <td>Ratings</td>
@@ -49,28 +52,29 @@
         </tr>
       </table>
     <% end %>
-  </table>
-</div>
-
-<div>
-  <%= form_for [ @restaurant, @review ] do |f| %>
-    <%= f.label "value" %>
-    <%= f.select :value, Review::VALUES, :include_blank => true %>
-
-    <%= f.label "proximity" %>
-    <%= f.select :proximity, Review::PROXIMITY, :include_blank => true %>
-
-    <%= f.label "volume" %>
-    <%= f.select :volume, Review::VOLUME, :include_blank => true %>
-
-    <%= f.label "originality" %>
-    <%= f.select :originality, Review::ORIGINALITY, :include_blank => true %>
-
-    <%= f.label "body" %>
-    <%= f.text_area :body %>
-
-    <%= f.submit "Submit" %>
   <% end %>
 </div>
 
+<% if current_user %>
+  <div>
+    <%= form_for [ @restaurant, @review ] do |f| %>
+      <%= f.label "value" %>
+      <%= f.select :value, Review::VALUES, :include_blank => true %>
+
+      <%= f.label "proximity" %>
+      <%= f.select :proximity, Review::PROXIMITY, :include_blank => true %>
+
+      <%= f.label "volume" %>
+      <%= f.select :volume, Review::VOLUME, :include_blank => true %>
+
+      <%= f.label "originality" %>
+      <%= f.select :originality, Review::ORIGINALITY, :include_blank => true %>
+
+      <%= f.label "body" %>
+      <%= f.text_area :body %>
+
+      <%= f.submit "Submit" %>
+    <% end %>
+  </div>
+<% end %>
 <p class="text-center"><%= link_to "Home", restaurants_path %></p>
