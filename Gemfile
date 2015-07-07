@@ -13,6 +13,7 @@ gem "carrierwave_direct"
 gem "fog"
 gem "devise"
 gem "foundation-rails"
+gem "kaminari"
 
 group :development, :test do
   gem "web-console", "~> 2.0"
@@ -29,4 +30,5 @@ end
 
 group :test do
   gem "coveralls", require: false
+  gem "factory_girl_rails"
 end
