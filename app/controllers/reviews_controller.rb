@@ -7,7 +7,9 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.restaurant_id = params[:restaurant_id]
+
     if @review.save
+      ReviewNotifier.new_review(@review).deliver_later
       flash[:notice] = "Thanks for your review!"
       redirect_to @review.restaurant
     else
