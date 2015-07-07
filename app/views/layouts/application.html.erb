@@ -27,6 +27,7 @@
 
       <ul class="right">
         <%- if current_user -%>
+          <%= image_tag current_user.profile_photo, size: '25x25', crop: :fill %>
           <%= link_to current_user.username, "#",
            {'data-dropdown' => 'hover_user', 'data-options' => 'is_hover: true; hover_timeout: 5000'} %>
           <ul id="hover_user" class="f-dropdown" data-dropdown-content>
