@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20150706171434) do
 
   add_index "restaurants", ["name"], name: "index_restaurants_on_name", unique: true, using: :btree
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id",       null: false
+    t.integer  "restaurant_id", null: false
+    t.integer  "value",         null: false
+    t.integer  "proximity",     null: false
+    t.integer  "volume",        null: false
+    t.integer  "originality",   null: false
+    t.string   "body"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
