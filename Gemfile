@@ -13,6 +13,8 @@ gem "carrierwave_direct"
 gem "fog"
 gem "devise"
 gem "foundation-rails"
+gem "kaminari"
+gem "factory_girl_rails"
 
 group :development, :test do
   gem "web-console", "~> 2.0"

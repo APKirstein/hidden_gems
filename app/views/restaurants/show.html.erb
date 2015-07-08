@@ -23,6 +23,7 @@
   <ul>
     <li><h2>Reviews:</h2></li>
     <br>
+    <%= paginate @reviews %>
     <% @reviews.each do |review| %>
       <table>
         <tr>

@@ -17,12 +17,12 @@ FactoryGirl.define do
   end
 
   factory :review do
-  user
-  restaurant
-  value 2
-  proximity 3
-  volume 4
-  originality 5
-  body "Dododooo we left a comment!"
+    user
+    restaurant
+    value 2
+    proximity 3
+    volume 4
+    originality 5
+    body "Dododooo we left a comment!"
   end
 end
