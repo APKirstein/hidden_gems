@@ -34,8 +34,8 @@ feature 'user views details of a restaurant', %{
       click_link 'Next'
 
       uri = URI.parse(current_url)
-      expect("#{uri.path}?#{uri.query}").to eq(restaurant_path(restaurant,
-      page: '2'))
+      expect("#{uri.path}?#{uri.query}").to
+        eq(restaurant_path(restaurant, page: '2'))
     end
   end
 
@@ -53,8 +53,8 @@ feature 'user views details of a restaurant', %{
       click_link 'Next'
 
       uri = URI.parse(current_url)
-      expect("#{uri.path}?#{uri.query}").to eq(restaurant_path(restaurant,
-      page: '2'))
+      expect("#{uri.path}?#{uri.query}").to
+        eq(restaurant_path(restaurant, page: '2'))
     end
   end
 end
