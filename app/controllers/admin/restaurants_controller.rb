@@ -2,7 +2,7 @@ module Admin
   class RestaurantsController < ApplicationController
     before_filter :authorize_admin!
     def index
-      @restaurants = Restaurant.all
+      @restaurants = Restaurant.all.page(params[:page])
     end
 
     def destroy

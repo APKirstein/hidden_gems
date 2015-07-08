@@ -20,10 +20,12 @@
 <br>
 <br>
 <div>
-  <h2>Reviews:</h2>
-  <br>
-  <% unless @restaurant.reviews.empty? %>
-    <% @restaurant.reviews.each do |review| %>
+  <ul>
+    <% unless @restaurant.reviews.empty? %>
+    <li><h2>Reviews:</h2></li>
+    <br>
+    <%= paginate @reviews %>
+    <% @reviews.each do |review| %>
       <table>
         <tr>
           <td>

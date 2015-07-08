@@ -2,11 +2,12 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.all.page(params[:page])
   end
 
   def show
     @restaurant = Restaurant.find(params[:id])
+    @reviews = @restaurant.reviews.page(params[:page]).per(5)
     @review = Review.new
   end
 
