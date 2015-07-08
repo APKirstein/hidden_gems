@@ -20,7 +20,8 @@ feature 'user can search for a restaurant', %{
     utf8_path = uri.query.split("&").first
     search_path = uri.query.split("=").last
 
-    expect("#{uri.path}?#{uri.query}").to eq("/restaurants?#{utf8_path}&search=#{search_path}")
+    expect("#{uri.path}?#{uri.query}").to eq("/restaurants?#{utf8_path}&search=
+      #{search_path}")
     expect(page).to have_content(restaurant.name)
   end
 end
