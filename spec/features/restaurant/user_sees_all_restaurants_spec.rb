@@ -29,7 +29,7 @@ feature 'user views list of all restaurants', %{
       click_link 'Next'
 
       uri = URI.parse(current_url)
-      expect("#{uri.path}?#{uri.query}").to eq(root_path(:page => '2'))
+      expect("#{uri.path}?#{uri.query}").to eq(root_path(page: '2'))
       expect(page).to_not have_content(restaurant.name)
     end
   end
@@ -40,7 +40,7 @@ feature 'user views list of all restaurants', %{
       click_link 'Next'
 
       uri = URI.parse(current_url)
-      expect("#{uri.path}?#{uri.query}").to eq(root_path(:page => '2'))
+      expect("#{uri.path}?#{uri.query}").to eq(root_path(page: '2'))
       expect(page).to_not have_content(restaurant.name)
     end
   end
