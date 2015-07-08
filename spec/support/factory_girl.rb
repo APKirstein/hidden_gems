@@ -17,8 +17,8 @@ FactoryGirl.define do
   end
 
   factory :review do
-    user_id 1
-    restaurant_id 1
+    user
+    restaurant
     value 2
     proximity 3
     volume 4
