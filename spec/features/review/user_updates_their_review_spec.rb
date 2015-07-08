@@ -19,7 +19,10 @@ feature 'user updates their review', %{
   let!(:user) { FactoryGirl.create(:user) }
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
   let!(:review) {
-    FactoryGirl.create(:review, restaurant: restaurant, user: user)
+    FactoryGirl.create(
+      :review,
+      restaurant: restaurant,
+      user: user)
   }
 
   context "user is signed in" do
