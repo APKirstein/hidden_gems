@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user views list of all restaurants', %{
+feature 'user views list of all paginated restaurants', %{
   As a user
   I want to visit the main page
   so I can see a list of all restaurants
@@ -16,10 +16,6 @@ feature 'user views list of all restaurants', %{
 
   before(:each) do
     50.times { FactoryGirl.create(:restaurant) }
-  end
-
-  after(:each) do
-    Restaurant.delete_all
   end
 
   context "user is signed in" do
