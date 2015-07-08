@@ -9,14 +9,13 @@ feature 'user views details of a restaurant', %{
   # [x] - I can click on a restaurant's name and get redirected
   # [x] - I am redirected to the restaurant show page
   # [x] - I can see the details of the restaurant
+  # [X] - I can see reviews and reviews are paginated
+
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
   let!(:user) { FactoryGirl.create(:user) }
 
   before(:each) do
     50.times { FactoryGirl.create(:review, restaurant_id: restaurant.id) }
-  end
-  after(:each) do
-    Review.delete_all
   end
 
   context "user is signed in" do

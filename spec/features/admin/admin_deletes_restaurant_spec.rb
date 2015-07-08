@@ -17,8 +17,8 @@ feature 'admin deletes restaurant', %{
 
   let!(:admin) { FactoryGirl.create(:user, role: 'admin') }
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
-
-  scenario 'admin deletes restaurants' do
+  
+  scenario 'admin deletes restaurants & sees paginated restaurants' do
     sign_in_as(admin)
     visit admin_restaurants_path
 
