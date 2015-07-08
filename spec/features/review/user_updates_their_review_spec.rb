@@ -38,7 +38,7 @@ feature 'user updates their review', %{
       :review,
       restaurant: restaurant,
       user: user2)
-      }
+    }
 
     scenario "an authenticated user cannot update another user's review" do
       user = FactoryGirl.create(:user)
