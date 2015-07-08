@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
     resources :restaurants, only: [:index, :destroy]
+    resources :reviews, only: [:index, :destroy]
   end
 
   resources :restaurants do
