@@ -14,14 +14,11 @@ feature 'user can search for a restaurant', %{
     visit root_path
 
     fill_in "search", with: restaurant.name
-    click_button "Search", visible: false
+    click_button "hidden-submit", visible: false
 
     uri = URI.parse(current_url)
-    utf8_path = uri.query.split("&").first
-    search_path = uri.query.split("=").last
+    page.current_path == uri
 
-    expect("#{uri.path}?#{uri.query}").to eq("/restaurants?#{utf8_path}&search="
-      + search_path)
     expect(page).to have_content(restaurant.name)
   end
 end
