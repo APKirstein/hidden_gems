@@ -1,0 +1,21 @@
+<h3> All Restaurants </h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Location</th>
+  </tr>
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.name %></td>
+      <td>
+        <%= restaurant.address %><br><%= restaurant.city %>,
+        <%= restaurant.state %> <%= restaurant.zip_code %>
+      </td>
+      <td>
+        <%= button_to "Delete", admin_restaurant_path(restaurant),
+          method: :delete, data: {confirm: "Are you sure you want to delete
+          #{restaurant.name}?"} %>
+      </td>
+    </tr>
+  <% end %>
+</table>

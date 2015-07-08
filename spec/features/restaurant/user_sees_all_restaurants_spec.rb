@@ -1,26 +1,30 @@
 require 'rails_helper'
 
-feature 'visitor views list of all restaurants', %Q{
+feature 'user views list of all restaurants', %{
   As a user
   I want to visit the main page
   so I can see a list of all restaurants
 } do
 
-  # [ ] - I can navigate to the root page
-  # [ ] - I can view a list of restaurants
-  # [ ] - I can view restaurnts in ranked order
+  # [x] - I can navigate to the root page
+  # [x] - I can view a list of restaurants
+  # [x] - I can view restaurants in ranked order
 
-  let(:restaurant) { Restaurant.create!(name: "Chipotle", address: "33 Harrison Ave", city: "Boston", state: "MA") }
+  let!(:restaurant) { FactoryGirl.create(:restaurant) }
+  let!(:user) { FactoryGirl.create(:user) }
 
-  scenario 'user visits the index page' do
-    visit '/'
-    expect(page).to have_content(restaurant.name)
-    expect(page).to have_content(restaurant.address)
-    expect(page).to have_content(restaurant.city)
-    expect(page).to have_content(restaurant.state)
+  context "user is signed in" do
+    scenario 'authenticated user visits the index page' do
+      visit root_path
+      sign_in_as(user)
+      expect(page).to have_content(restaurant.name)
+    end
   end
 
-  scenario 'user sees restaurants ordered by ranking' do
-    skip
+  context "user is not signed in" do
+    scenario 'unauthenticated user visits the index page' do
+      visit root_path
+      expect(page).to have_content(restaurant.name)
+    end
   end
 end
