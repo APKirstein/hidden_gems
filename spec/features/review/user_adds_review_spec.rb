@@ -61,6 +61,7 @@ feature 'user adds a review', %{
       expect(page).to have_content("1")
       expect(page).to have_content("3")
       expect(page).to have_content("Thanks for your review!")
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
 
     scenario 'user adds a review without filling out all fields' do

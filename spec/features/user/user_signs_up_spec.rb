@@ -24,6 +24,8 @@ feature 'user registers', %{
 
     click_button 'Sign up'
 
+    page.should have_selector("img[src$='image_upload.jpg']")
+
     expect(page).to have_content('Welcome! You have signed up successfully.')
     expect(page).to have_content('Sign Out')
   end

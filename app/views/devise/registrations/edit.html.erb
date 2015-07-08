@@ -32,6 +32,11 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :profile_photo %>
+    <%= f.file_field :profile_photo %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
