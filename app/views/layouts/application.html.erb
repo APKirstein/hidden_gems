@@ -17,6 +17,11 @@
 
     <section class="top-bar-section">
       <ul class="left">
+        <%= form_tag restaurants_path, :method => "get", id: "search-form" do %>
+          <%= text_field_tag :search, params[:search], size: 30,
+          placeholder: 'Search Restaurants' %>
+          <%= submit_tag 'Search', name: nil, id: 'hidden-submit', style: 'display: none;' %>
+        <% end %>
         <%- if !current_user.nil? && current_user.admin? -%>
         <li class="has-dropdown">
           <%= link_to 'admin', '#' %>
