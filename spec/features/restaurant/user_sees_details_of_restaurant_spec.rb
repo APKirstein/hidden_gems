@@ -12,6 +12,13 @@ feature 'user views details of a restaurant', %{
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
   let!(:user) { FactoryGirl.create(:user) }
 
+  before(:each) do
+    50.times { FactoryGirl.create(:review, restaurant_id: restaurant.id) }
+  end
+  after(:each) do
+    Review.delete_all
+  end
+
   context "user is signed in" do
     scenario 'authenticated user visits the index page' do
       visit root_path
@@ -23,6 +30,11 @@ feature 'user views details of a restaurant', %{
       expect(page).to have_content(restaurant.address)
       expect(page).to have_content(restaurant.city)
       expect(page).to have_content(restaurant.state)
+
+      click_link 'Next'
+
+      uri = URI.parse(current_url)
+      expect("#{uri.path}?#{uri.query}").to eq(restaurant_path(restaurant, page: '2'))
     end
   end
 
@@ -36,6 +48,11 @@ feature 'user views details of a restaurant', %{
       expect(page).to have_content(restaurant.address)
       expect(page).to have_content(restaurant.city)
       expect(page).to have_content(restaurant.state)
+
+      click_link 'Next'
+
+      uri = URI.parse(current_url)
+      expect("#{uri.path}?#{uri.query}").to eq(restaurant_path(restaurant, page: '2'))
     end
   end
 end
