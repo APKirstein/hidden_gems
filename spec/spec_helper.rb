@@ -1,6 +1,8 @@
 require 'coveralls'
 Coveralls.wear!('rails')
 
+require 'factory_girl_rails'
+
 def sign_in_as(user)
   visit root_path
   click_link "Sign In"
