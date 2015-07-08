@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @reviews = @restaurant.reviews
     @review = Review.new
+    # binding.pry
   end
 
   def new

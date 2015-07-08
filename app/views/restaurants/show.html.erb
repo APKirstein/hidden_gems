@@ -31,6 +31,12 @@
               <%= review.user.username.capitalize%>
             </h4>
           </td>
+          <% if current_user == review.user %>
+            <td>
+              <p><%= button_to "Delete Review", restaurant_review_path(@restaurant, review.id), method: :delete, data:
+              {confirm: "Are you sure you want to delete this review?"}%></p>
+            </td>
+          <% end %>
         </tr>
         <tr>
           <td>Ratings</td>

@@ -6,59 +6,51 @@ feature 'user deletes their review', %{
   Because I no longer want that review on the site
 } do
 
-  # [] I must be signed in
-  # [] If I'm not signed in, I should be prompted to do so
-  # [] I can only delete my own reviews
-  # [] I delete by clicking on the delete button in the Edit Profile page
-  # [] I am prompted to confirm the deletion
-  # [] I get a successfully deleted message
-  # [] I no longer see my review on the Restaurant's show page
+  # [x] I must be signed in
+  # [x] I can only delete my own reviews
+  # [x] I delete by clicking on the delete button in the Restaurant Show page
+  # [x] I am prompted to confirm the deletion
+  # [x] I get a successfully deleted message
+  # [x] I no longer see my review on the Restaurant's show page
 
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
+  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user2) { FactoryGirl.create(:user) }
 
   context "user is signed in" do
-    let!(:user) { FactoryGirl.create(:user) }
-
-    before(:each) do
-      visit new_user_session_path
-
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
-
-      click_button 'Log in'
-    end
-
     scenario 'an authenticated user wants to delete their review' do
-      let!(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id,
-        user_id: user.id) }
+      review = FactoryGirl.create(:review, restaurant: restaurant, user: user)
 
-      visit restaurant_path(id: restaurant)
+      sign_in_as(user)
 
-      click_link "Edit Review"
+      visit restaurant_path(restaurant)
 
       click_button "Delete Review"
 
-      expect(page).to_not have_content(review.comment)
+      expect(page).to_not have_content(review.body)
       expect(page).to have_content("Your review has been deleted")
     end
 
     scenario "an authenticated user cannot delete another user's review" do
-      let!(:review) { FactoryGirl.create(:review, restaurant_id: restaurant.id,
-        user_id: (user.id + 1)) }
+      review2 = FactoryGirl.create(:review, restaurant: restaurant, user: user2)
 
-      visit edit_review_path(id: review)
+      sign_in_as(user)
+
+      visit restaurant_path(restaurant)
 
       expect(page).to_not have_content("Delete Review")
+      expect(page).to have_content(review2.body)
     end
   end
 
   context "user is not signed in" do
     scenario "an unauthenticated user cannot delete any reviews" do
-      let!(:review) { FactoryGirl.create(:review, restaurant: restaurant.id) }
+      review3 = FactoryGirl.create(:review, restaurant: restaurant, user: user2)
 
-      visit edit_review_path(id: review)
+      visit restaurant_path(restaurant)
 
       expect(page).to_not have_content("Delete Review")
+      expect(page).to have_content(review3.body)
     end
   end
 end
