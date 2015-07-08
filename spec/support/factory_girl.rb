@@ -15,7 +15,7 @@ FactoryGirl.define do
     state Faker::Address.state_abbr
     zip_code Faker::Address.zip_code
   end
-  
+
   factory :review do
     user
     restaurant_id 1
