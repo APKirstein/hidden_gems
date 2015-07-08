@@ -1,3 +1,6 @@
+require 'factory_girl'
+require './spec/support/factory_girl'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -21,3 +24,7 @@ restaurant.update_attributes!(
   state: "MA",
   zip_code: "20111"
   )
+
+# to test pagination in development
+50.times { FactoryGirl.create(:restaurant) }
+50.times { FactoryGirl.create(:user) }
