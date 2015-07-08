@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
-    resources :reviews, only: [:show, :new, :create, :index]
+    resources :reviews, only: [:new, :create, :index]
   end
 
   resources :reviews, only: [:edit, :update]
