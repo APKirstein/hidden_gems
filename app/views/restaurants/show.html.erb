@@ -49,12 +49,12 @@
           <td><%= review.body %></td>
           <td>
 
-            <%= link_to like_restaurant_review_path(@restaurant, review), data: {link: 'up'}, method: :put, class: "button", remote: true do %>
+            <%= link_to like_restaurant_review_path(@restaurant, review), data: {link: 'up'}, method: :put, class: "button" do %>
               &#9650;
               <span id="<%= review.id %>-upvotes"><%= review.get_upvotes.size %></span>
             <% end %>
 
-            <%= link_to dislike_restaurant_review_path(@restaurant, review), method: :put, class: "button", remote: true do %>
+            <%= link_to dislike_restaurant_review_path(@restaurant, review), data: {link: 'down'}, method: :put, class: "button" do %>
               &#9660;
               <span id="downvotes"><%= review.get_downvotes.size %></span>
             <% end %>
