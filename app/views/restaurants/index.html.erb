@@ -5,7 +5,7 @@
     <% @restaurants.each do |restaurant| %>
       <div class="large-3 small-6 columns end index-boxes">
         <ul>
-          <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+          <li><h5><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></h3></li>
           <li>Value: <%= restaurant.average_ranking('value') %></li>
           <li>Proximity: <%= restaurant.average_ranking('proximity') %></li>
           <li>Volume: <%= restaurant.average_ranking('volume') %></li>
