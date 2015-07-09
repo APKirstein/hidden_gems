@@ -18,30 +18,3 @@ class Restaurant < ActiveRecord::Base
     end
   end
 end
-
-
-
-
-# Grouped values: This returns an ordered hash of the values and groups them. It
-#   takes either a column name, or the name of a belongs_to association.
-#
-#     values = Person.group('last_name').maximum(:age)
-#     puts values["Drake"]
-#     # => 43
-#
-#     drake  = Family.find_by(last_name: 'Drake')
-#     values = Person.group(:family).maximum(:age) # Person belongs_to :family
-#     puts values[drake]
-#     # => 43
-#
-#     values.each do |family, max_age|
-#     ...
-#     end
-#
-# Person.calculate(:count, :all) # The same as Person.count
-# Person.average(:age) # SELECT AVG(age) FROM people...
-#
-# # Selects the minimum age for any family without any minors
-# Person.group(:last_name).having("min(age) > 17").minimum(:age)
-#
-# Person.sum("2 * age")
