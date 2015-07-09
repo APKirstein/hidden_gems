@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :restaurants
 
+  get '/reviews/test' => 'reviews#test'
+
   namespace :admin do
     resources :users, only: [:index, :destroy]
     resources :restaurants, only: [:index, :destroy]
@@ -11,6 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
-    resources :reviews, only: [:new, :create, :show]
+    resources :reviews, only: [:new, :create, :show] do
+      member do
+        put "like", to:    "reviews#upvote"
+        put "dislike", to: "reviews#downvote"
+      end
+    end
   end
 end

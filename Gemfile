@@ -15,6 +15,7 @@ gem "devise"
 gem "foundation-rails"
 gem "kaminari"
 gem "factory_girl_rails"
+gem "acts_as_votable", '~> 0.10.0'
 
 group :development, :test do
   gem "web-console", "~> 2.0"

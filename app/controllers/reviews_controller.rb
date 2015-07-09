@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate_user!, only: [:upvote, :downvote]
+
   def new
     @review = Review.new
   end
@@ -15,6 +17,32 @@ class ReviewsController < ApplicationController
     else
       flash[:notice] = @review.errors.full_messages.join(". ")
       redirect_to @review.restaurant
+    end
+  end
+
+  def upvote
+    @review = Review.find(params[:id])
+    @vote = @review.votes.find(params[:id])
+    @review.upvote_by current_user
+
+    respond_to do |format|
+      if @review.upvote_by current_user
+        format.html { redirect_to restaurant_path(params[:restaurant_id]), notice: "We heard your Vote!" }
+        # format.js
+        format.json { render json: { size: @review.get_upvotes.size, id: @review.id } }
+      end
+    end
+  end
+
+  def downvote
+    @review = Review.find(params[:id])
+
+    respond_to do |format|
+      if @review.downvote_from current_user
+        format.html { redirect_to :back, notice: "We heard your Vote!" }
+        # format.js
+        format.json { render json: { size: @review.get_downvotes.size, id: @review.id } }
+      end
     end
   end
 

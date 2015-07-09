@@ -16,3 +16,20 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: "/restaurants/#{params[:id]}",
+  //   success: function(test){
+  //     console.log(test);
+  //   }
+  // });
+
+
+  // $.ajax({
+  //   type: "GET",
+  //   url: '/reviews/test',
+  //   success: function(data) {
+  //     console.log(data);
+  //   }
+  // })

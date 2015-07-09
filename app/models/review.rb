@@ -11,6 +11,7 @@ class Review < ActiveRecord::Base
   ORIGINALITY = [["1 - same ol' same", 1], ["2", 2], ["3", 3],
                 ["4", 4], ["5 - tweeting about it now", 5]]
 
+  acts_as_votable
   belongs_to :user
   belongs_to :restaurant
 
