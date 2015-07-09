@@ -3,7 +3,7 @@
     <div class="row">
 
     <% @restaurants.each do |restaurant| %>
-      <div class="large-3 small-6 columns end">
+      <div class="large-3 small-6 columns end index-boxes">
         <ul>
           <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
           <li>Value: <%= restaurant.average_ranking('value') %></li>
