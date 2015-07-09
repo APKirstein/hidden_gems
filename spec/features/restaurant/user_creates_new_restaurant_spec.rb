@@ -33,7 +33,6 @@ feature 'user adds a new restaurant', %{
 
     # invalid test
     scenario 'user submits an invalid restaurant' do
-      save_and_open_page
       sign_in_as(user)
       visit new_restaurant_path
 
