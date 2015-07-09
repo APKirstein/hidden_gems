@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @restaurants = Restaurant.all.page(params[:page])
+    @restaurants = Restaurant.all.page(params[:page]).per(12)
   end
 
   def show
