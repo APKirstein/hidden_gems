@@ -12,7 +12,7 @@
     <div class="inner-wrap">
         <nav class="tab-bar sticky">
           <section class="middle tab-bar-section">
-            <h1 class="title">DateBites</h1>
+            <h1 class="title"><%= link_to "DateBites", root_path %></h1>
           </section>
           <section class="right-small">
             <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
@@ -43,7 +43,11 @@
         </aside>
 
         <section class="main-section">
-          <%= yield %>
+          <div class="row">
+            <div class="small-12 small-centered columns text-center">
+              <%= yield %>
+            </div>
+          </div>
         </section>
 
     <a class="exit-off-canvas"></a>
@@ -110,7 +114,11 @@
       </div>
     <%- end -%>
 
-    <%= yield %>
+    <div class="row">
+      <div class="small-12 small-centered columns text-center">
+        <%= yield %>
+      </div>
+    </div>
   </div>
 
   <%= javascript_include_tag 'application' %>
