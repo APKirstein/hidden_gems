@@ -8,116 +8,20 @@
 </head>
 <body>
 
-  <div class="off-canvas-wrap show-for-small-only fixed" data-offcanvas>
+  <div class="off-canvas-wrap fixed" data-offcanvas>
     <div class="inner-wrap">
-        <nav class="tab-bar sticky">
-          <section class="middle tab-bar-section">
-            <h1 class="title"><%= link_to "DateBites", root_path %></h1>
-          </section>
-          <section class="right-small">
-            <a class="right-off-canvas-toggle menu-icon" href="#"><span></span></a>
-          </section>
-        </nav>
+      <%= render "layouts/small_header" %>
+      <%= render "layouts/not_small_header" %>
+      <%= render "layouts/flash" %>
 
-        <aside class="right-off-canvas-menu">
-          <ul class="off-canvas-list">
-            <%- if !current_user.nil? -%>
-            <li><label> Welcome <%= current_user.username %>! </label></li>
-            <%- else -%>
-            <li><label> Welcome to Date Bites! </label></li>
-            <%- end -%>
-            <%- if current_user %>
-            <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-            <%- else -%>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <%- end -%>
-
-            <%- if !current_user.nil? && current_user.admin? -%>
-            <li><label>Admin</label></li>
-            <li><%= link_to 'Users', admin_users_path %></li>
-            <li><%= link_to 'Restaurants', admin_restaurants_path %></li>
-            <%- end -%>
-          </ul>
-        </aside>
-
-        <section class="main-section">
-          <div class="row">
-            <div class="small-12 small-centered columns text-center">
-              <%= yield %>
-            </div>
+      <section class="main-section">
+        <div class="row">
+          <div class="small-12 small-centered columns text-center">
+            <%= yield %>
           </div>
-        </section>
-
-    <a class="exit-off-canvas"></a>
-
-    </div>
-  </div>
-
-
-  <div class="show-for-medium-up">
-    <div class="fixed">
-      <nav class="top-bar" data-topbar role="navigation">
-        <ul class="title-area">
-          <li class="name">
-            <h1><a href="/">Date Bites</a></h1>
-          </li>
-        </ul>
-
-        <section class="top-bar-section">
-
-          <ul class="right">
-            <li> <%= link_to 'Add Restaurant', new_restaurant_path %> </li>
-            <%- if !current_user.nil? && current_user.admin? -%>
-              <li class="has-dropdown">
-                <%= link_to 'admin', '#' %>
-                <ul class="dropdown">
-                  <li><%= link_to 'Users', admin_users_path %></li>
-                  <li><%= link_to 'Restaurants', admin_restaurants_path %></li>
-                </ul>
-              </li>
-
-              <li class="has-dropdown">
-                <%= link_to current_user.username, "#" %>
-                <ul class="dropdown">
-                  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-                  <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-                </ul>
-              </li>
-              <!-- <div id=profile_pic> -->
-              <li id=profile_pic>
-                <%= image_tag current_user.profile_photo, size: '25x25' %>
-              </li>
-              <!-- </div> -->
-            <%- elsif current_user -%>
-              <%= image_tag current_user.profile_photo, size: '25x25', crop: :fill %>
-              <li class="has-dropdown">
-                <%= link_to current_user.username, "#" %>
-                <ul class="dropdown">
-                  <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-                  <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-                  <%- else -%>
-                  <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-                  <li><%= link_to 'Sign In', new_user_session_path %></li>
-                </ul>
-              </li>
-            <%- end -%>
-          </ul>
-        </section>
-      </nav>
-    </div>
-
-    <%- flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>">
-        <%= value %>
-      </div>
-    <%- end -%>
-
-    <div class="row">
-      <div class="small-12 small-centered columns text-center">
-        <%= yield %>
-      </div>
+        </div>
+      </section>
+      <a class="exit-off-canvas"></a>
     </div>
   </div>
 
