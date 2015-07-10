@@ -10,7 +10,7 @@
           <%= form_tag restaurants_path, :method => "get", id: "search-form" do %>
             <%= text_field_tag :search, params[:search], size: 30,
             placeholder: 'Search Restaurants', required: true %>
-            "<%= submit_tag 'Search', class: "button postfix", name: nil, id: 'hidden-submit', style: 'display: none;' %>
+            <%= submit_tag 'Search', class: "button postfix", name: nil, id: 'hidden-submit', style: 'display: none;' %>
           <% end %>
           <div class="clear"></div>
         </div>

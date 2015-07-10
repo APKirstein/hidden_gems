@@ -1,7 +1,7 @@
 <div class="show-for-medium-up">
 
-  <div class="fixed">
-    <nav class="top-bar" data-topbar role="navigation">
+  <!-- <div class="fixed"> -->
+    <nav class="top-bar fixed" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
           <h1><a href="/">Date Bites</a></h1>
@@ -22,7 +22,7 @@
             </li>
 
             <li class="has-dropdown">
-              <%= link_to current_user.username, "#", is_hover: true %>
+              <%= link_to current_user.username, "#", is_hover: false  %>
               <ul class="dropdown">
                 <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
                 <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
@@ -49,5 +49,5 @@
         </ul>
       </section>
     </nav>
-  </div>
+  <!-- </div> -->
 </div>

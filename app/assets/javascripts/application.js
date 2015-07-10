@@ -16,5 +16,5 @@
 //= require_tree .
 
 $(function(){
-  $(document).foundation('offcanvas', 'reflow');
+  $(document).foundation('reflow');
 });
