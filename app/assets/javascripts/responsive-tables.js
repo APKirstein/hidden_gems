@@ -23,7 +23,7 @@ $(document).ready(function() {
 
 	function splitTable(original)
 	{
-		original.wrap('<div class='table-wrapper' />');
+		original.wrap('<div class="table-wrapper" />');
 
 		var copy = original.clone();
 		copy.find('td:not(:first-child),
@@ -31,8 +31,8 @@ $(document).ready(function() {
 		copy.removeClass('responsive');
 
 		original.closest('.table-wrapper').append(copy);
-		copy.wrap('<div class='pinned' />');
-		original.wrap('<div class='scrollable' />');
+		copy.wrap('<div class="pinned" />');
+		original.wrap('<div class="scrollable" />');
 
     setCellHeights(original, copy);
 	}
