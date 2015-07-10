@@ -1,3 +1,4 @@
+
 <div class="small-centered column fill-form">
   <h3>All Users</h3>
   <table class="responsive centered">
@@ -10,7 +11,7 @@
         <td><%= user.username %></td>
         <td><%= user.email %></td>
         <td>
-          <%= button_to "Delete", admin_user_path(user), method: :delete, class: "button small round", data:
+          <%= button_to "Delete", admin_user_path(user), method: :delete, class: "button tiny round", data:
           {confirm: "Are you sure you want to delete #{user.username}?"} %>
         </td>
       </tr>
