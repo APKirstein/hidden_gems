@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<<<<<<< HEAD
   <div class="off-canvas-wrap fixed" data-offcanvas>
     <div class="inner-wrap">
       <%= render "layouts/small_header" %>
@@ -17,7 +16,9 @@
       <section class="main-section">
         <div class="row fullWidth">
           <div class="small-12 small-centered columns text-center">
-            <%= yield %>
+            <div class = "under-header">
+              <%= yield %>
+            </div>
           </div>
         </section>
 
