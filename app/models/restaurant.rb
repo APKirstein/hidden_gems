@@ -9,6 +9,10 @@ class Restaurant < ActiveRecord::Base
   validates :state, presence: true, inclusion: { in: STATE }
   validates :zip_code, format: { with: /\d{5}/ }, allow_blank: true
 
+  def self.search(query)
+    where("name ilike ?", "%#{query}%")
+  end
+
   def average_ranking(column)
     if !Review.where(restaurant_id: id).empty?
       average_score = Review.where(restaurant_id: id).average(column.to_sym)
