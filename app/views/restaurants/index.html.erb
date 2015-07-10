@@ -1,50 +1,51 @@
-<div id="home-main-image">
-  <div class="inner row">
-    <!-- text -->
-    <div class="home-text-search">
-      <h1>Date Bites</h1>
-      <h2>Find the best restaurants to bring a date.</h2>
-      <!-- search -->
-      <div class="home-search">
-        <div class="inner">
-          <%= form_tag restaurants_path, :method => "get", id: "search-form" do %>
-            <%= text_field_tag :search, params[:search], size: 30,
-            placeholder: 'Search Restaurants', required: true %>
-            <%= submit_tag 'Search', class: "button postfix", name: nil, id: 'hidden-submit', style: 'display: none;' %>
-          <% end %>
-          <div class="clear"></div>
+<div class="row fullWidth">
+  <div id="home-main-image">
+    <div class="inner row">
+      <!-- text -->
+      <div class="home-text-search">
+        <h1>Date Bites</h1>
+        <h2>Find the best restaurants to bring a date.</h2>
+        <!-- search -->
+        <div class="home-search">
+          <div class="inner">
+            <%= form_tag restaurants_path, :method => "get", id: "search-form" do %>
+              <%= text_field_tag :search, params[:search], size: 30,
+              placeholder: 'Search Restaurants', required: true %>
+              <%= submit_tag 'Search', class: "button postfix", name: nil, id: 'hidden-submit', style: 'display: none;' %>
+            <% end %>
+            <div class="clear"></div>
+          </div>
         </div>
       </div>
+      <img src="https://s3.amazonaws.com/date-bites-production/static/date-bites-homepage.png">
     </div>
-    <img src="https://s3.amazonaws.com/date-bites-production/static/date-bites-homepage.png">
   </div>
-</div>
 
-<div class="inner row fullWidth">
-  <div class="large-12 columns index-box-container fullWidth">
-    <div class="inner row fullWidth">
-      <br><br>
-      <ul>
+  <div class="inner row">
+    <div class="large-12 columns index-box-container">
+      <div class="columns medium-10 medium-offset-1">
         <% if @restaurants.empty? %>
           No results match your search.
         <% else %>
           <% @restaurants.each do |restaurant| %>
-            <div class="large-3 small-6 columns index-boxes end">
-              <ul>
-                <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
-                <li>Value: <%= restaurant.average_ranking('value') %></li>
-                <li>Proximity: <%= restaurant.average_ranking('proximity') %></li>
-                <li>Volume: <%= restaurant.average_ranking('volume') %></li>
-                <li>Originality: <%= restaurant.average_ranking('originality') %></li>
-              </ul>
+            <div class="large-4 small-6 columns end">
+              <div class="index-boxes">
+                <ul>
+                  <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+                  <li>Value: <%= restaurant.average_ranking('value') %></li>
+                  <li>Proximity: <%= restaurant.average_ranking('proximity') %></li>
+                  <li>Volume: <%= restaurant.average_ranking('volume') %></li>
+                  <li>Originality: <%= restaurant.average_ranking('originality') %></li>
+                </ul>
+              </div>
             </div>
           <% end %>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="inner row">
-  <p><%= paginate @restaurants %></p>
-</div>
+  <div class="inner row">
+    <p><%= paginate @restaurants %></p>
+  </div>
