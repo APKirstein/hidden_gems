@@ -1,60 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DateBites</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div class="fixed">
-  <nav class="top-bar" data-topbar role="navigation">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Date Bites</a></h1>
-      </li>
-    </ul>
-
-    <section class="top-bar-section">
-      <ul class="left">
-        <%- if !current_user.nil? && current_user.admin? -%>
-        <li class="has-dropdown">
-          <%= link_to 'admin', '#' %>
-          <ul class="dropdown">
-            <li><%= link_to 'Users', admin_users_path %></li>
-            <li><%= link_to 'Restaurants', admin_restaurants_path %></li>
-          </ul>
-        <%- end -%>
-      </ul>
-
-      <ul class="right">
-        <%- if current_user -%>
-        <%= image_tag current_user.profile_photo, size: '25x25', crop: :fill %>
-          <li class="has-dropdown">
-            <%= link_to current_user.username, "#" %>
-            <ul class="dropdown">
-              <li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-              <%- else -%>
-              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-              <li><%= link_to 'Sign In', new_user_session_path %></li>
-            </ul>
+  <div>
+    <div class="fixed">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/">Date Bites</a></h1>
           </li>
-      <%- end -%>
-      </ul>
-    </section>
-  </nav>
-</div>
+        </ul>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
+        <div class="off-canvas-wrap fixed" data-offcanvas>
+          <div class="inner-wrap">
+            <%= render "layouts/small_header" %>
+            <%= render "layouts/not_small_header" %>
+            <%= render "layouts/flash" %>
+
+            <section class="main-section">
+              <div class="row">
+                <div class="small-12 small-centered columns text-center">
+                  <%= yield %>
+                </div>
+              </div>
+            </section>
+            <a class="exit-off-canvas"></a>
+          </div>
+        </div>
+
+      <%= javascript_include_tag 'application' %>
+      <%= yield :extra_footer %>
     </div>
-  <%- end -%>
-
-  <%= yield %>
-
-  <%= javascript_include_tag 'application' %>
-  <%= yield :extra_footer %>
-</body>
+  </body>
 </html>

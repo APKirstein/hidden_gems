@@ -22,7 +22,10 @@ feature 'user signs out', %{
 
     expect(page).to have_content('Signed in successfully')
 
-    click_link 'Sign Out'
+    within(".show-for-medium-up") do
+      click_link "Sign Out"
+    end
+
     expect(page).to have_content('Signed out successfully')
   end
 
