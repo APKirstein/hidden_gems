@@ -30,6 +30,11 @@ ul {
   margin: auto;
 }
 
+.container {
+  margin: auto;
+  width: 60%;
+}
+
 /*.fixed {
 
 }*/
