@@ -1,6 +1,10 @@
 <ul>
-  <% @restaurants.each do |restaurant| %>
-    <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+  <% if @restaurants.empty? %>
+    No results match your search.
+  <% else %>
+    <% @restaurants.each do |restaurant| %>
+      <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+    <% end %>
   <% end %>
 </ul>
 
