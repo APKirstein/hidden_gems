@@ -18,6 +18,7 @@
               <ul class="dropdown">
                 <li><%= link_to 'Users', admin_users_path %></li>
                 <li><%= link_to 'Restaurants', admin_restaurants_path %></li>
+                <li><%= link_to 'Reviews', admin_reviews_path %></li>
               </ul>
             </li>
 
@@ -34,7 +35,9 @@
             </li>
             <!-- </div> -->
           <%- elsif current_user -%>
-            <%= image_tag current_user.profile_photo, size: '25x25', crop: :fill %>
+            <li id=profile_pic>
+              <%= image_tag current_user.profile_photo, size: '25x25' %>
+            </li>
             <li class="has-dropdown">
               <%= link_to current_user.username, "#" %>
               <ul class="dropdown">

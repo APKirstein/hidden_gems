@@ -21,6 +21,7 @@ feature 'user adds a review', %{
   # originality: Same Old, Same Old - 2 - 3 - 4 - Telling All My Friends
   let!(:restaurant) { FactoryGirl.create(:restaurant) }
   let!(:user) { FactoryGirl.create(:user) }
+  let!(:admin) { FactoryGirl.create(:user, role: "admin") }
 
   context "user is signed in" do
     scenario 'user adds a review with comment from restaurant detail page' do

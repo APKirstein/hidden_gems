@@ -1,15 +1,15 @@
 <h3> All Reviews </h3>
 <%= paginate @reviews %>
-<table>
+<table class="responsive centered">
   <tr>
     <th>User</th>
     <th>Restaurant Reviewed</th>
-    <th>Review (if provided)</th>
+    <th>Review (optional)</th>
   </tr>
   <% @reviews.each do |review| %>
     <tr>
-      <td><%= review.user %></td>
-      <td><%= review.restaurant %></td>
+      <td><%= review.user.username %></td>
+      <td><%= review.restaurant.name %></td>
       <td><%= review.body %></td>
       <td>
         <%= button_to "Delete", admin_review_path(review),
