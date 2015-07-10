@@ -7,13 +7,13 @@ feature 'user adds a review', %{
 } do
 
   # Acceptance Criteria
-  # [] I must be signed in
-  # [] If user is not signed in, user will be prompted to sign in
-  # [] My review must include ratings for all 4 key attributes
-  # [] I can leave an optional comment
-  # [] When I submit my review, I can see it on the restaurant's detail page
-  # [] I must be presented with errors if I leave an invalid review
-  # [] If all is good, I get a successfully submitted message
+  # [x] I must be signed in
+  # [x] If user is not signed in, user will be prompted to sign in
+  # [x] My review must include ratings for all 4 key attributes
+  # [x] I can leave an optional comment
+  # [x] When I submit my review, I can see it on the restaurant's detail page
+  # [x] I must be presented with errors if I leave an invalid review
+  # [x] If all is good, I get a successfully submitted message
 
   # value: Not Worth It - 2 - 3 - 4 - Worth It
   # proximity: Middle of Nowhere - 2 - 3 - 4 - Right Next Door
@@ -27,19 +27,19 @@ feature 'user adds a review', %{
       sign_in_as(user)
       visit restaurant_path(restaurant)
 
-      select 'worth it', from: "review_value"
-      select 'right next door', from: "review_proximity"
-      select 'needed to scream', from: "review_volume"
+      select '2', from: "review_value"
+      select '3', from: "review_proximity"
+      select '4', from: "review_volume"
       select 3, from: "review_originality"
       fill_in 'review_body', with: 'Textytexttext'
 
       click_button 'Submit'
 
       expect(page).to have_content(restaurant.name)
-      expect(page).to have_content("5")
-      expect(page).to have_content("5")
-      expect(page).to have_content("1")
-      expect(page).to have_content("3")
+      expect(page).to have_content("Value: 2")
+      expect(page).to have_content("Proximity: 3")
+      expect(page).to have_content("Volume: 4")
+      expect(page).to have_content("Originality: 3")
       expect(page).to have_content("Textytexttext")
       expect(page).to have_content("Thanks for your review!")
     end
