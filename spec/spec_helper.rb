@@ -5,7 +5,9 @@ require 'factory_girl_rails'
 
 def sign_in_as(user)
   visit root_path
-  click_link "Sign In"
+  within(".show-for-medium-up") do
+    click_link "Sign In"
+  end
   fill_in 'Email', with: user.email
   fill_in 'Password', with: user.password
   click_button 'Log in'

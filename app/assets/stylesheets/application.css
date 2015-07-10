@@ -17,3 +17,8 @@
 ul {
   list-style: none;
 }
+
+/*Centered Reviews Table*/
+.centered {
+  margin: auto;
+}
