@@ -26,7 +26,6 @@ ul {
   list-style: none;
 }
 
-/*Centered Reviews Table*/
 .centered {
   margin: auto;
 }
@@ -57,7 +56,6 @@ ul {
   position: absolute;
   width: 500px;
   height: 80px;
-  /*background-color: rgba(255, 255, 255, 0.2);*/
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
