@@ -4,11 +4,11 @@ describe Restaurant do
   describe '.search' do
     it 'should return restaurants with the name queried' do
       restaurant = Restaurant.create(
-          name: "Chipotle",
-          address: "33 Harrison Ave",
-          city: "Boston",
-          state: "MA",
-          zip_code: "02111"
+        name: "Chipotle",
+        address: "33 Harrison Ave",
+        city: "Boston",
+        state: "MA",
+        zip_code: "02111"
         )
       expect(Restaurant.search(restaurant.name)).to eq([restaurant])
     end

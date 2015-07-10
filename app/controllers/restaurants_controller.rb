@@ -2,7 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    if params[:search] 
+    if params[:search]
       @restaurants = Restaurant.search(params[:search]).page(params[:page])
     else
       @restaurants = Restaurant.all.page(params[:page])
