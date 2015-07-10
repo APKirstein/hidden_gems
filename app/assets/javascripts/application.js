@@ -16,5 +16,5 @@
 //= require_tree .
 
 $(function(){
-  $(document).foundation('reflow');
+  $(document).foundation();
 });
