@@ -1,5 +1,5 @@
-<h1><%= @restaurant.name %></h1>
-    <ul class="restaurant_info">
+<h1 class="restaurant"><%= @restaurant.name %></h1>
+    <ul class="restaurant_info restaurant">
       <li>
         <%= @restaurant.address %>
       </li>
@@ -11,7 +11,7 @@
     </ul>
 <br>
   <% unless @restaurant.reviews.empty? %>
-    <h1>Reviews</h1>
+    <h3>Reviews</h3>
     <br>
     <%= paginate @reviews %>
       <table class="responsive centered">
@@ -62,7 +62,7 @@
 </div>
 <br>
 
-<div class="container">
+<div class="new-review container">
   <%= form_for [ @restaurant, @review ] do |f| %>
     <%= f.label "value" %>
     <%= f.select :value, Review::VALUES, :include_blank => true %>

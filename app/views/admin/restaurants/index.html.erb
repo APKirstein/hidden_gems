@@ -1,6 +1,5 @@
-<div id="admin_restaurant-index">
+<div class="small-centered column fill-form">
   <h3> All Restaurants </h3>
-  <%= paginate @restaurants %>
   <table class="responsive centered">
     <tr>
       <th>Name</th>
@@ -8,17 +7,21 @@
     </tr>
     <% @restaurants.each do |restaurant| %>
       <tr>
-        <td><%= restaurant.name %></td>
+        <td><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></td>
         <td>
           <%= restaurant.address %><br><%= restaurant.city %>,
           <%= restaurant.state %> <%= restaurant.zip_code %>
         </td>
         <td>
           <%= button_to "Delete", admin_restaurant_path(restaurant),
-            method: :delete, data: {confirm: "Are you sure you want to delete
+            method: :delete, class: "button small round", data: {confirm: "Are you sure you want to delete
             #{restaurant.name}?"} %>
+        </td>
+        <td>
+          <%= link_to "Edit", edit_restaurant_path(restaurant) %>
         </td>
       </tr>
     <% end %>
   </table>
+  <%= paginate @restaurants %>
 </div>
