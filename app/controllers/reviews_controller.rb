@@ -28,10 +28,11 @@ class ReviewsController < ApplicationController
       if @review.upvote_by current_user
         format.json {
           render json: {
-          id: @review.id,
-          upsize: @review.get_upvotes.size,
-          downsize: @review.get_downvotes.size
-        }}
+            id: @review.id,
+            upsize: @review.get_upvotes.size,
+            downsize: @review.get_downvotes.size
+            }
+          }
       else
         render json: {}
       end
@@ -46,10 +47,11 @@ class ReviewsController < ApplicationController
       if @review.downvote_from current_user
         format.json {
           render json: {
-          id: @review.id,
-          downsize: @review.get_downvotes.size,
-          upsize: @review.get_upvotes.size
-        }}
+            id: @review.id,
+            downsize: @review.get_downvotes.size,
+            upsize: @review.get_upvotes.size
+            }
+          }
       else
         render json: {}
       end
