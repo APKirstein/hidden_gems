@@ -7,16 +7,18 @@
 //  padding-top: 59.05%;
 //}
 
+$lt-gold: #ffecbd;
+$mid-gold: #d4aa65;
+$dark-gold: #ca7C1F;
+$bg-color: #151818;
 $red: #9B2925;
 $dark-red: darken( $red, 20% );
-$font-color: #151818;
-$lt-gold: #ffecbd;
-
+$transparent: rgba(0, 0, 0, 0);
 
 .index-boxes {
   background-color: $red;
   border: 2px solid $dark-red;
-  color: $font-color;
+  color: $dark-gold;
   height: 150px;
   margin: 10px;
 }
@@ -25,4 +27,26 @@ $lt-gold: #ffecbd;
   background-color: $lt-gold;
   padding-bottom: 40px;
   margin: 0px;
+}
+
+.fill-form {
+  padding-top: 30px;
+  margin:auto;
+}
+
+.restaurant {
+  color: $red;
+}
+
+h1.restaurant {
+  padding: 30px;
+}
+
+.new-review {
+  background-color: $red;
+  padding: 15px 35px;
+}
+
+.new-review label {
+  font-size: 14pt;
 }

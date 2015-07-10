@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @review = Review.new
   end
@@ -18,6 +18,44 @@ class ReviewsController < ApplicationController
     else
       flash[:notice] = @review.errors.full_messages.join(". ")
       render "restaurants/show"
+    end
+  end
+
+  def upvote
+    @review = Review.find(params[:id])
+    @review.upvote_by current_user
+
+    respond_to do |format|
+      if @review.upvote_by current_user
+        format.json {
+          render json: {
+            id: @review.id,
+            upsize: @review.get_upvotes.size,
+            downsize: @review.get_downvotes.size
+          }
+        }
+      else
+        render json: {}
+      end
+    end
+  end
+
+  def downvote
+    @review = Review.find(params[:id])
+    @review.downvote_by current_user
+
+    respond_to do |format|
+      if @review.downvote_from current_user
+        format.json {
+          render json: {
+            id: @review.id,
+            downsize: @review.get_downvotes.size,
+            upsize: @review.get_upvotes.size
+          }
+        }
+      else
+        render json: {}
+      end
     end
   end
 

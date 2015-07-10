@@ -33,9 +33,10 @@ ul {
   margin: auto;
 }
 
-/*.fixed {
-
-}*/
+.container {
+  margin: auto;
+  width: 60%;
+}
 
 #home-main-image .inner .home-text-search {
   width: 100%;
