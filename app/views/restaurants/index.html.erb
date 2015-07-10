@@ -1,4 +1,40 @@
-<div class="row">
+<div id="home-main-image">
+  <div class="inner row">
+    <!-- text -->
+    <div class="home-text-search">
+      <h1>Date Bites</h1>
+      <h2>Find the best restaurants to bring a date.</h2>
+      <!-- search -->
+      <div class="home-search">
+        <div class="inner">
+          <%= form_tag restaurants_path, :method => "get", id: "search-form" do %>
+            <%= text_field_tag :search, params[:search], size: 30,
+            placeholder: 'Search Restaurants', required: true %>
+            <%= submit_tag 'Search', class: "button postfix", name: nil, id: 'hidden-submit', style: 'display: none;' %>
+          <% end %>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </div>
+    <img src="https://s3.amazonaws.com/date-bites-production/static/date-bites-homepage.png">
+  </div>
+</div>
+
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+  <% end %>
+</ul>
+
+    <div class="row">
+      <p><%= paginate @restaurants %></p>
+    </div>
+  </div>
+</div>
+
+
+<!-- restaurant squares -->
+<!-- <div class="row">
   <div class="large-12 columns">
     <div class="row">
       <ul>
@@ -19,9 +55,5 @@
         <% end %>
       </ul>
     </div>
-
-    <div class="row">
-      <p><%= paginate @restaurants %></p>
-    </div>
   </div>
-</div>
+</div> -->
