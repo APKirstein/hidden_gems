@@ -4,7 +4,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DateBites</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <link href='http://fonts.googleapis.com/css?family=Amaranth:700italic' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,6 +11,7 @@
     <div class="inner-wrap">
       <%= render "layouts/small_header" %>
       <%= render "layouts/not_small_header" %>
+
       <%= render "layouts/flash" %>
 
       <section class="main-section">
@@ -29,4 +29,15 @@
   </div>
       <%= javascript_include_tag 'application' %>
       <%= yield :extra_footer %>
+
+      <script>
+        $(document).ready(function() {
+          setTimeout(function(){
+            $('#notice_wrapper').fadeOut("slow", function() {
+              $(this).remove();
+            })
+          }, 1500);
+        });
+      </script>
+
 </body>
