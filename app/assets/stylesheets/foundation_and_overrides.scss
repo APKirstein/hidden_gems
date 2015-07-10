@@ -134,8 +134,8 @@ $transparent: rgba(0, 0, 0, 0);
 
 $body-bg: $bg-color;
 
-// $body-font-color: $jet;
-$body-font-family: $font-family-serif;
+$body-font-color: $dark-gold;
+$body-font-family: $font-family-sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
@@ -473,7 +473,7 @@ $anchor-font-color: $mid-gold;
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-$button-bg-color: #ffecbd;
+$button-bg-color: $red;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
@@ -650,7 +650,7 @@ $button-bg-color: #ffecbd;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: $font-weight-normal;
 // $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-font-color: $dark-gold;
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
