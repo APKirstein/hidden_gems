@@ -3,9 +3,9 @@ class RestaurantsController < ApplicationController
 
   def index
     if params[:search]
-      @restaurants = Restaurant.search(params[:search]).page(params[:page])
+      @restaurants = Restaurant.search(params[:search]).page(params[:page]).per(12)
     else
-      @restaurants = Restaurant.all.page(params[:page])
+      @restaurants = Restaurant.all.page(params[:page]).per(12)
     end
   end
 

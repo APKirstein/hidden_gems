@@ -7,14 +7,22 @@
 //  padding-top: 59.05%;
 //}
 
-$box-bg: #600000;
-$box-border: #400000;
-$font-color: #808080;
+$red: #9B2925;
+$dark-red: darken( $red, 20% );
+$font-color: #151818;
+$lt-gold: #ffecbd;
+
 
 .index-boxes {
-  background-color: $box-bg;
-  border: 2px solid $box-border;
+  background-color: $red;
+  border: 2px solid $dark-red;
   color: $font-color;
   height: 150px;
   margin: 10px;
+}
+
+.under-header {
+  background-color: $lt-gold;
+  padding-bottom: 40px;
+  margin: 0px;
 }
