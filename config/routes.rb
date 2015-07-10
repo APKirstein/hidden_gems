@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :reviews, only: [:new, :create, :show] do
       member do
-        put "like", to:    "reviews#upvote"
+        put "like", to: "reviews#upvote"
         put "dislike", to: "reviews#downvote"
       end
     end

@@ -1,7 +1,6 @@
 module Admin
   class UsersController < ApplicationController
     before_filter :authorize_admin!
-    
     def index
       @users = User.where(role: 'user').page(params[:page])
     end
