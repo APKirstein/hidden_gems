@@ -27,12 +27,12 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.upvote_by current_user
         format.json {
-          render json: {
+            render json: {
             id: @review.id,
             upsize: @review.get_upvotes.size,
             downsize: @review.get_downvotes.size
-            }
           }
+        }
       else
         render json: {}
       end
@@ -46,12 +46,12 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.downvote_from current_user
         format.json {
-          render json: {
+            render json: {
             id: @review.id,
             downsize: @review.get_downvotes.size,
             upsize: @review.get_upvotes.size
-            }
           }
+        }
       else
         render json: {}
       end
