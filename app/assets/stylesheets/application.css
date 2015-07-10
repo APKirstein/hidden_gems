@@ -15,6 +15,9 @@
  *= require_self
  */
 
+ @import url(http://fonts.googleapis.com/css?family=Amaranth:700italic);
+ @import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+
 .fullWidth {
   width: 100%;
   margin-left: auto;
@@ -40,19 +43,22 @@ ul {
   position: absolute;
   margin-top: 17.36% !important; }
 #home-main-image .inner .home-text-search h1 {
-  font-family: proxima_novasemibold !important;
-  font-size: 73px;
+  font-family: 'Amaranth', sans-serif;
+  font-style: italic;
+  letter-spacing: 1px;
+  font-size: 8vw;
   color: #fff;
   text-align: center;
-  height: 73px;
-  line-height: 73px !important;
+  /*height: 73px;*/
+  line-height: 90% !important;
   margin-bottom: 7px; }
 #home-main-image .inner .home-text-search h2 {
   width: 100%;
-  font-family: proxima_nova_rgregular !important;
-  font-size: 18px;
-  height: 18px;
-  line-height: 18px !important;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+  /*height: 18px;*/
+  /*line-height: 18px !important;*/
   text-align: center;
   color: #fff; }
 #home-main-image .inner .home-text-search .home-search {
