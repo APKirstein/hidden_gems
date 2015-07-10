@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   root 'restaurants#index'
   devise_for :users
 
-  resources :restaurants
-
   namespace :admin do
     resources :users, only: [:index, :destroy]
     resources :restaurants, only: [:index, :destroy]
@@ -11,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :restaurants do
-    resources :reviews, only: [:new, :create, :show]
+    resources :reviews, only: [:new, :create, :show, :destroy]
   end
+
+  resources :reviews, only: [:edit, :update]
 end
