@@ -1,9 +1,21 @@
-<ul>
-  <% @restaurants.each do |restaurant| %>
-    <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="large-12 columns">
+    <div class="row">
 
-<h3 class="text-center"><%= link_to "New", new_restaurant_path %></h3>
+    <% @restaurants.each do |restaurant| %>
+      <div class="large-3 small-6 columns index-boxes end">
+        <ul>
+          <li><%= link_to "#{restaurant.name}", restaurant_path(restaurant) %></li>
+          <li>Value: <%= restaurant.average_ranking('value') %></li>
+          <li>Proximity: <%= restaurant.average_ranking('proximity') %></li>
+          <li>Volume: <%= restaurant.average_ranking('volume') %></li>
+          <li>Originality: <%= restaurant.average_ranking('originality') %></li>
+        </ul>
+      </div>
+    <% end %>
+    </div>
 
-<%= paginate @restaurants %>
+
+    <div class="row">
+      <p><%= paginate @restaurants %></p>
+    </div>

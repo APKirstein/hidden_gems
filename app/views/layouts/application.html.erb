@@ -7,25 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="background">
+    <div class="fixed">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <h1><a href="/">Date Bites</a></h1>
+          </li>
+        </ul>
 
-  <div class="off-canvas-wrap fixed" data-offcanvas>
-    <div class="inner-wrap">
-      <%= render "layouts/small_header" %>
-      <%= render "layouts/not_small_header" %>
-      <%= render "layouts/flash" %>
+        <div class="off-canvas-wrap fixed" data-offcanvas>
+          <div class="inner-wrap">
+            <%= render "layouts/small_header" %>
+            <%= render "layouts/not_small_header" %>
+            <%= render "layouts/flash" %>
 
-      <section class="main-section">
-        <div class="row">
-          <div class="small-12 small-centered columns text-center">
-            <%= yield %>
+            <section class="main-section">
+              <div class="row">
+                <div class="small-12 small-centered columns text-center">
+                  <%= yield %>
+                </div>
+              </div>
+            </section>
+            <a class="exit-off-canvas"></a>
           </div>
         </div>
-      </section>
-      <a class="exit-off-canvas"></a>
-    </div>
-  </div>
 
-  <%= javascript_include_tag 'application' %>
-  <%= yield :extra_footer %>
-</body>
+      <%= javascript_include_tag 'application' %>
+      <%= yield :extra_footer %>
+    </div>
+  </body>
 </html>
