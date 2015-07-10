@@ -13,7 +13,7 @@ $(document).ready(function() {
         $('#' + data.id + '-downvotes').html(data.downsize);
       },
       error: function() {
-        alert('An error occurred')
+        alert('An error occurred');
       }
     });
   });
@@ -30,7 +30,7 @@ $(document).ready(function() {
         $('#' + data.id + '-upvotes').html(data.upsize);
       },
       error: function() {
-        alert('An error occurred')
+        alert('An error occurred');
       }
     });
   });
