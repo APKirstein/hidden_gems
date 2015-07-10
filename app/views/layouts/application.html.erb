@@ -7,18 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <!-- <div id="background"> -->
-    <div class="off-canvas-wrap fixed" data-offcanvas>
-      <div class="inner-wrap">
-        <%= render "layouts/small_header" %>
-        <%= render "layouts/not_small_header" %>
-        <%= render "layouts/flash" %>
 
-        <section class="main-section">
-          <div class="row">
-            <div class="small-12 small-centered columns text-center">
-              <%= yield %>
-            </div>
+  <div class="off-canvas-wrap fixed" data-offcanvas>
+    <div class="inner-wrap">
+      <%= render "layouts/small_header" %>
+      <%= render "layouts/not_small_header" %>
+      <%= render "layouts/flash" %>
+
+      <section class="main-section">
+        <div class="row fullWidth">
+          <div class="small-12 small-centered columns text-center">
+            <%= yield %>
           </div>
         </section>
 
@@ -28,6 +27,4 @@
 
       <%= javascript_include_tag 'application' %>
       <%= yield :extra_footer %>
-  <!-- </div> -->
 </body>
-</html>

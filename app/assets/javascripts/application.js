@@ -15,4 +15,10 @@
 //= require foundation
 //= require_tree .
 
+<<<<<<< HEAD
 $(function(){ $(document).foundation('offcanvas', 'reflow'); });
+=======
+$(function(){
+  $(document).foundation('offcanvas', 'reflow');
+});
+>>>>>>> b3e9cca32135bf84e824b1e2ba0188aac87dfdd4
