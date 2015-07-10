@@ -4,10 +4,9 @@ $(document).ready(function() {
   $('.upvote').on('click', function(event) {
     event.preventDefault();
 
-    $link = $(event.currentTarget);
     $.ajax({
       type: 'PUT',
-      url: $link.attr('href'),
+      url: $(event.currentTarget).attr('href'),
       dataType: 'json',
       success: function(data) {
         $('#' + data.id + '-upvotes').html(data.upsize);
@@ -22,11 +21,9 @@ $(document).ready(function() {
   $('.downvote').on('click', function(event) {
     event.preventDefault();
 
-    $link = $(event.currentTarget);
-
     $.ajax({
       type: 'PUT',
-      url: $link.attr('href'),
+      url: $(event.currentTarget).attr('href'),
       dataType: 'json',
       success: function(data) {
         $('#' + data.id + '-downvotes').html(data.downsize);
