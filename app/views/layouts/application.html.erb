@@ -15,7 +15,7 @@
       <%= render "layouts/flash" %>
 
       <section class="main-section">
-        <div class="row">
+        <div class="row fullWidth">
           <div class="small-12 small-centered columns text-center">
             <%= yield %>
           </div>
@@ -28,4 +28,3 @@
   <%= javascript_include_tag 'application' %>
   <%= yield :extra_footer %>
 </body>
-</html>

@@ -15,6 +15,14 @@
  *= require foundation_and_overrides
 
  */
+
+.fullWidth {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: initial;
+}
+
 ul {
   list-style: none;
 }
@@ -23,3 +31,37 @@ ul {
 .centered {
   margin: auto;
 }
+
+#home-main-image .inner .home-text-search {
+  width: 100%;
+  margin-top: 0%;
+  position: absolute;
+  margin-top: 17.36% !important; }
+#home-main-image .inner .home-text-search h1 {
+  font-family: proxima_novasemibold !important;
+  font-size: 73px;
+  color: #fff;
+  text-align: center;
+  height: 73px;
+  line-height: 73px !important;
+  margin-bottom: 7px; }
+#home-main-image .inner .home-text-search h2 {
+  width: 100%;
+  font-family: proxima_nova_rgregular !important;
+  font-size: 18px;
+  height: 18px;
+  line-height: 18px !important;
+  text-align: center;
+  color: #fff; }
+#home-main-image .inner .home-text-search .home-search {
+  margin-top: 40px !important;
+  position: absolute;
+  width: 500px;
+  height: 80px;
+  /*background-color: rgba(255, 255, 255, 0.2);*/
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  left: 50%;
+  margin-left: -250px;
+  }
