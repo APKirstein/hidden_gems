@@ -27,8 +27,9 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.upvote_by current_user
         format.html { redirect_to restaurant_path(params[:restaurant_id]), notice: "We heard your Vote!" }
-        # format.js
-        format.json { render json: { size: @review.get_upvotes.size, id: @review.id } }
+        format.json { render json: { id: @review.id, upsize: @review.get_upvotes.size, downsize: @review.get_downvotes.size } }
+      else
+        render json: {}
       end
     end
   end
@@ -40,8 +41,9 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       if @review.downvote_from current_user
         format.html { redirect_to restaurant_path(params[:restaurant_id]), notice: "We heard your Vote!" }
-        # format.js
-        format.json { render json: { size: @review.get_downvotes.size, id: @review.id } }
+        format.json { render json: { id: @review.id, downsize: @review.get_downvotes.size, upsize: @review.get_upvotes.size } }
+      else
+        render json: {}
       end
     end
   end

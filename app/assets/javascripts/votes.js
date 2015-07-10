@@ -1,25 +1,25 @@
 // app/assets/javascripts/votes.js
 
 $(document).ready(function() {
-  $('[data-link="up"]').on('click', function(event) {
+  $('.upvote').on('click', function(event) {
     event.preventDefault();
 
     $link = $(event.currentTarget);
-
     $.ajax({
       type: 'PUT',
       url: $link.attr('href'),
       dataType: 'json',
       success: function(data) {
-        $span = $('#' + data.id + '-upvotes')
-        $span.html(data.size)
+        $('#' + data.id + '-upvotes').html(data.upsize)
+        $('#' + data.id + '-downvotes').html(data.downsize)
       },
       error: function() {
         alert('An error occurred')
       }
     });
-  })
-  $('[data-link="down"]').on('click', function(event) {
+  });
+
+  $('.downvote').on('click', function(event) {
     event.preventDefault();
 
     $link = $(event.currentTarget);
@@ -29,8 +29,8 @@ $(document).ready(function() {
       url: $link.attr('href'),
       dataType: 'json',
       success: function(data) {
-        $span = $('#' + data.id + '-downvotes')
-        $span.html(data.size)
+        $('#' + data.id + '-downvotes').html(data.downsize)
+        $('#' + data.id + '-upvotes').html(data.upsize)
       },
       error: function() {
         alert('An error occurred')
