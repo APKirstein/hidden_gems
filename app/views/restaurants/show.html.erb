@@ -9,14 +9,8 @@
         <%= @restaurant.zip_code %>
       </li>
     </ul>
-
-    <% if current_user %>
-      <p><%= link_to "Edit Restaurant", edit_restaurant_path(@restaurant) %></p>
-
-      <p><%= button_to "Delete", @restaurant, method: :delete, data:
-      {confirm: "Are you sure you want to delete this restaurant?"}%></p>
-    <% end %>
 <br>
+  <% unless @restaurant.reviews.empty? %>
     <h1>Reviews</h1>
     <br>
     <%= paginate @reviews %>
@@ -28,7 +22,13 @@
         </tr>
         <% @reviews.each do |review| %>
         <tr>
-          <td><%= review.user.username.capitalize%></td>
+          <td><h5><%= review.user.username%></h5>
+            <% if current_user == review.user %>
+              <p><%= link_to "Edit Review", edit_review_path(review) %></p>
+              <p><%= button_to "Delete Review", restaurant_review_path(@restaurant, review.id), method: :delete, data:
+              {confirm: "Are you sure you want to delete this review?"}%></p>
+            <% end %>
+          </td>
           <td>
             <ul>
               <li>Value: <%= review.value %></li>
@@ -58,10 +58,11 @@
         </tr>
         <% end %>
       </table>
+  <% end %>
 </div>
 <br>
 
-<div class="row container">
+<div class="container">
   <%= form_for [ @restaurant, @review ] do |f| %>
     <%= f.label "value" %>
     <%= f.select :value, Review::VALUES, :include_blank => true %>
