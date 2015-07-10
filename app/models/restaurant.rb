@@ -12,4 +12,13 @@ class Restaurant < ActiveRecord::Base
   def self.search(query)
     where("name ilike ?", "%#{query}%")
   end
+
+  def average_ranking(column)
+    if !Review.where(restaurant_id: id).empty?
+      average_score = Review.where(restaurant_id: id).average(column.to_sym)
+      average_score.round
+    else
+      "n/a"
+    end
+  end
 end
