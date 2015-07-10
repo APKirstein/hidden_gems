@@ -471,7 +471,7 @@ $anchor-font-color: $mid-gold;
 // We use these to control button border styles.
 // $button-border-width: 0;
 // $button-border-style: solid;
-// $button-bg-color: $primary-color;
+$button-bg-color: #ffecbd;
 // $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
 // $button-border-color: $button-bg-hover;
 // $secondary-button-bg-hover: scale-color($secondary-color, $lightness: $button-function-factor);
@@ -1427,7 +1427,7 @@ $topbar-bg: $transparent;
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
 $topbar-link-bg: $topbar-bg;
 $topbar-link-bg-hover: $transparent;
-$topbar-link-bg-color-hover: r$transparent;
+$topbar-link-bg-color-hover: $transparent;
 $topbar-link-bg-active: $transparent;
 $topbar-link-bg-active-hover: $transparent;
 // $topbar-link-font-family: $body-font-family;
